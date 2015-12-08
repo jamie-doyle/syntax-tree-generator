@@ -1,0 +1,6 @@
+c:\users\jamie\documents\visual studio 2015\Projects\SyntaxTreeGen\SyntaxTreeGen\bin\Debug\SyntaxTreeGen.exe.config
+C:\Users\Jamie\documents\visual studio 2015\Projects\SyntaxTreeGen\SyntaxTreeGen\bin\Debug\SyntaxTreeGen.exe
+C:\Users\Jamie\documents\visual studio 2015\Projects\SyntaxTreeGen\SyntaxTreeGen\bin\Debug\SyntaxTreeGen.pdb
+C:\Users\Jamie\documents\visual studio 2015\Projects\SyntaxTreeGen\SyntaxTreeGen\obj\Debug\SyntaxTreeGen.csprojResolveAssemblyReference.cache
+C:\Users\Jamie\documents\visual studio 2015\Projects\SyntaxTreeGen\SyntaxTreeGen\obj\Debug\SyntaxTreeGen.exe
+C:\Users\Jamie\documents\visual studio 2015\Projects\SyntaxTreeGen\SyntaxTreeGen\obj\Debug\SyntaxTreeGen.pdb
