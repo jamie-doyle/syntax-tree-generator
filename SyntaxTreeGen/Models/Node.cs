@@ -7,11 +7,9 @@ namespace SyntaxTreeGen.Models
     /// </summary>
     public abstract class Node
     {
-        private static int _depth;
-
         private Node _left;
         private Node _right;
-
+        
         // Additional information about this node
         public string Info { get; set; }
         
@@ -19,6 +17,7 @@ namespace SyntaxTreeGen.Models
         {
             _left = left;
             _right = right;
+            
         }
         
         public Node Left
@@ -57,7 +56,7 @@ namespace SyntaxTreeGen.Models
                 return Left + " " + Info;
             
             if (Right != null)
-                return Info +" " +  Right;
+                return Info + " " +  Right;
 
             return Info;
         }

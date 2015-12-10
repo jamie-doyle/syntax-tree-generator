@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace SyntaxTreeGen.Models
 {
@@ -65,8 +66,7 @@ namespace SyntaxTreeGen.Models
 
         public override string ToString()
         {
-            // TODO: possible override needed here?
-            return base.ToString();
+            return Left + " " + GetOperator(Op) + " " + Right;
         }
     }
 }

@@ -8,12 +8,11 @@ namespace SyntaxTreeGen.Models
     class VarNode : Node
     {
         public Type NodeType { get; }
-
+        
         public VarNode(Type varType, string varName) : base(null,null)
         {
             NodeType = varType;
             Info = varName;
         }
-        
     }
 }
