@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\AssignNode.cs" />
     <Compile Include="Models\ConstantNode.cs" />
     <Compile Include="Models\IfNode.cs" />
     <Compile Include="Models\IntConNode.cs" />

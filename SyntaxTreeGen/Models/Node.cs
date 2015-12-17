@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace SyntaxTreeGen.Models
 {
@@ -7,58 +10,80 @@ namespace SyntaxTreeGen.Models
     /// </summary>
     public abstract class Node
     {
-        private Node _left;
-        private Node _right;
-        
-        // Additional information about this node
+        private readonly int _size;
+        private readonly List<Node> _subnodes;
+
+        /// <summary>
+        /// A textual representation of the function of this node
+        /// </summary>
         public string Info { get; set; }
-        
-        protected Node(Node left, Node right)
+     
+        /// <summary>
+        /// Adds a node to the next available branch of this node.
+        /// </summary>
+        /// <param name="n">Node to add</param>
+        public void AddSubnode(Node n)
         {
-            _left = left;
-            _right = right;
-            
-        }
-        
-        public Node Left
-        {
-            get { return _left; }
-            set
-            {
-                CanHaveChildNode();
+           if (_subnodes.Count == _size)
+                throw new InvalidOperationException("This node cannot have any more subnodes.");
 
-                _left = value;
-            }
-        }
-
-        public Node Right
-        {
-            get { return _right; }
-            set
-            {
-                CanHaveChildNode();
-
-                _right = value;
-            }
+           _subnodes.Add(n);
         }
 
         /// <summary>
-        /// Produces a string representation of this node and its children.
+        /// The subnodes of this node
+        /// </summary>
+        public List<Node> Subnodes => _subnodes;
+
+        /// <summary>
+        /// Basic constructor, describing the number of children allowed.
+        /// </summary>
+        /// <param name="maxChild">
+        /// Maximum number of children allowed on this node. 
+        /// May be omitted for nodes with no children.
+        /// </param>
+        protected Node(int maxChild = 0)
+        {
+            _size = maxChild;
+            _subnodes = new List<Node>();
+        }
+        
+        /// <summary>
+        /// Base constructor for N parameters
+        /// </summary>
+        /// <param name="node">One or more nodes</param>
+        /// <param name="size">Maximum number of subnodes allowed</param>
+        protected Node(int size, params Node[] node)
+        {
+            _size = size;
+            _subnodes = new List<Node>();
+            
+            foreach (var n in node)
+            {
+                AddSubnode(n);
+            }
+        }
+
+        
+
+        /// <summary>
+        /// Produces a string representation of this node and its children. This generic ToString
+        /// should be overriden by more specific representaions in inherited classes.
         /// </summary>
         /// <returns></returns>
         public override string ToString()
         {
-            // NB: ToString is called implicitly on Left/Right nodes
-            if (Left != null && Right != null)
-                return Left + " " + Info + " " + Right;
+            // If a node has no subnodes, just return its value
+            if (_subnodes.Count < 1)
+                return Info;
 
-            if (Left != null)
-                return Left + " " + Info;
+            // Otherwise, build a string containing its nodes. 
+            var sb = new StringBuilder();
             
-            if (Right != null)
-                return Info + " " +  Right;
-
-            return Info;
+            foreach (var n in _subnodes)
+                sb.Append(n + " ");
+            
+            return sb.ToString();
         }
 
         /// <summary>

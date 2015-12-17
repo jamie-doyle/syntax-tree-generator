@@ -15,17 +15,19 @@ namespace SyntaxTreeGen
             var five = new ConstantNode<int>(5);
             var ten = new ConstantNode<int>(10);
 
-            var plus = new OperatorNode(OpKind.Add, five, ten);
-            var gt = new OperatorNode(OpKind.GreaterThan, plus, five);
+            var fiveplusten = new OperatorNode(OpKind.Add, five, ten);
+            var gt = new OperatorNode(OpKind.GreaterThan, fiveplusten, five);
 
             // assign = " res = x "
-            var assign = new OperatorNode(OpKind.Equals, new VarNode(typeof(string), "res"),
-                new VarNode(typeof(string), "x"));
+            var assignResX = new AssignNode( new VarNode(typeof (int), "res"), new VarNode(typeof(string), "x"));
 
-            var innerIf = new IfNode(new ConstantNode<bool>(true), assign);
+            var innerIf = new IfNode(new ConstantNode<bool>(true), assignResX);
 
-            // ifNode = "if [GT] { res = x }" 
-            var ifNode = new IfNode(gt, innerIf);
+            // Build "ELSE res = 10"
+            var elsePart = new AssignNode(new VarNode(typeof(int), "res"), ten);
+
+            // ifNode = "if [GT] { res = x } else { res = 10 } " 
+            var ifNode = new IfNode(gt, innerIf, elsePart);
 
             var res = ifNode.ToString();
 

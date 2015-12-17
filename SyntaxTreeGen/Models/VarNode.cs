@@ -9,7 +9,7 @@ namespace SyntaxTreeGen.Models
     {
         public Type NodeType { get; }
         
-        public VarNode(Type varType, string varName) : base(null,null)
+        public VarNode(Type varType, string varName)
         {
             NodeType = varType;
             Info = varName;

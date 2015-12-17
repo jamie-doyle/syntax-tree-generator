@@ -11,12 +11,16 @@ namespace SyntaxTreeGen.Models
 
         private readonly T _constVal;
         
-        public ConstantNode(T constVal) : base(null, null)
+        /// <summary>
+        /// Creates a node with no children
+        /// </summary>
+        /// <param name="constVal"></param>
+        public ConstantNode(T constVal) : base()
         {
             _constVal = constVal;
             Info = constVal.ToString();
             NodeType = typeof(T);
         }
-
+        
     }
 }

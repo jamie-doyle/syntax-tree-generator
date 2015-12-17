@@ -12,7 +12,7 @@ namespace SyntaxTreeGen.Models
     [Obsolete ("Use ConstantNode<int> instead")]
     class IntConNode : Node
     {
-        public IntConNode(int value) : base(null, null)
+        public IntConNode(int value)
         {
             Info = value.ToString();
         }

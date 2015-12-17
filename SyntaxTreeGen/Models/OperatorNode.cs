@@ -6,7 +6,7 @@ namespace SyntaxTreeGen.Models
     internal class OperatorNode : Node
     {
         /// <summary>
-        /// Defines the operators possible.
+        /// Defines the collection of usable operators for this node
         /// </summary>
         public enum OpKind
         {
@@ -26,7 +26,7 @@ namespace SyntaxTreeGen.Models
         /// </summary>
         public OpKind Op { get; }
 
-        public OperatorNode(OpKind op, Node left, Node right) : base(left, right)
+        public OperatorNode(OpKind op, Node left, Node right) : base(2, left, right)
         {
             Op = op;
             Info = GetOperator(op);
@@ -58,7 +58,7 @@ namespace SyntaxTreeGen.Models
                 case OpKind.ToPowerOf:
                     return "^";
                 case OpKind.Equals:
-                    return "=";
+                    return "==";
                 default:
                     throw new ArgumentOutOfRangeException(nameof(op), op, "The operator used does not exist.");
             }
@@ -66,7 +66,7 @@ namespace SyntaxTreeGen.Models
 
         public override string ToString()
         {
-            return Left + " " + GetOperator(Op) + " " + Right;
+            return Subnodes[0] + " " + GetOperator(Op) + " " + Subnodes[1];
         }
     }
 }
