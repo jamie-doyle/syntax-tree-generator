@@ -12,13 +12,18 @@ namespace SyntaxTreeGen.Models
         {
             LessThan,
             GreaterThan,
+            LessThanOrEqual,
+            GreaterThanOrEqual,
             Add,
             Subtract,
             Multiply,
             Divide,
             Modulo,
             ToPowerOf,
-            Equals
+            Equals,
+            Not,
+            And,
+            Or
         }
 
         /// <summary>
@@ -45,10 +50,14 @@ namespace SyntaxTreeGen.Models
                     return "<";
                 case OpKind.GreaterThan:
                     return ">";
+                case OpKind.GreaterThanOrEqual:
+                    return "<=";
+                case OpKind.LessThanOrEqual:
+                    return ">=";
                 case OpKind.Add:
                     return "+";
                 case OpKind.Subtract:
-                    return "+";
+                    return "-";
                 case OpKind.Multiply:
                     return "*";
                 case OpKind.Divide:
@@ -59,6 +68,12 @@ namespace SyntaxTreeGen.Models
                     return "^";
                 case OpKind.Equals:
                     return "==";
+                case OpKind.Not:
+                    return "!=";
+                case OpKind.And:
+                    return "&&";
+                case OpKind.Or:
+                    return "||";
                 default:
                     throw new ArgumentOutOfRangeException(nameof(op), op, "The operator used does not exist.");
             }
@@ -66,7 +81,7 @@ namespace SyntaxTreeGen.Models
 
         public override string ToString()
         {
-            return Subnodes[0] + " " + GetOperator(Op) + " " + Subnodes[1];
+            return "(" +  Subnodes[0] + " " + GetOperator(Op) + " " + Subnodes[1] + ")";
         }
     }
 }

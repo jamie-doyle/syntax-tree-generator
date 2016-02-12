@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 namespace SyntaxTreeGen.Models
@@ -63,9 +62,7 @@ namespace SyntaxTreeGen.Models
                 AddSubnode(n);
             }
         }
-
         
-
         /// <summary>
         /// Produces a string representation of this node and its children. This generic ToString
         /// should be overriden by more specific representaions in inherited classes.
@@ -81,7 +78,7 @@ namespace SyntaxTreeGen.Models
             var sb = new StringBuilder();
             
             foreach (var n in _subnodes)
-                sb.Append(n + " ");
+                sb.Append(n.ToString() + " ");
             
             return sb.ToString();
         }

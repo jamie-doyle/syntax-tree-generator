@@ -47,10 +47,11 @@
     <Compile Include="Models\ConstantNode.cs" />
     <Compile Include="Models\IfNode.cs" />
     <Compile Include="Models\IntConNode.cs" />
+    <Compile Include="Models\MethodNode.cs" />
     <Compile Include="Models\Node.cs" />
     <Compile Include="Models\OperatorNode.cs" />
     <Compile Include="Models\VarNode.cs" />
-    <Compile Include="Models\XmlDocument.cs" />
+    <Compile Include="Models\ImportedDocument.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

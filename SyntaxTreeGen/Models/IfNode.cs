@@ -84,7 +84,7 @@ namespace SyntaxTreeGen.Models
 
             while (i > 0)
             {
-                x += "\t";
+                x += "  ";
                 i--;
             }
 
