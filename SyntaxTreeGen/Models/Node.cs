@@ -83,22 +83,6 @@ namespace SyntaxTreeGen.Models
             return sb.ToString();
         }
 
-        /// <summary>
-        /// Checks this node may have child nodes. Attempting to add a child 
-        /// to nodes representing variables, constants, etc. will produce an error.
-        /// </summary>
-        /// <exception cref="InvalidOperationException">
-        /// Thrown when attempting to add a child node to a terminal node.
-        /// </exception>
-        private void CanHaveChildNode()
-        {
-            var gt = GetType();
 
-            if (gt != typeof(ConstantNode<>) && gt != typeof(VarNode))
-                return;
-            
-            throw new InvalidOperationException(
-                "Constants and variables cannot have child nodes.");
-        }
     }
 }

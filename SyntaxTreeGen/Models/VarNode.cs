@@ -1,19 +1,35 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace SyntaxTreeGen.Models
 {
     /// <summary>
     /// Represents a variable
     /// </summary>
-    class VarNode : Node
+    public class VarNode : Node
     {
-        public Type NodeType { get; }
-        
-        // todo: new variables 
-        public VarNode(Type varType, string varName) : base(0)
+        //public T NodeValue { get; set; }
+
+        public bool HasBeenDeclared { get; private set; }
+        public Type NodeType { get; private set; }
+
+        /// <summary>
+        /// Constructor for VarNode
+        /// </summary>
+        /// <param name="varName"></param>
+        public VarNode(Type type, string varName) : base(0)
         {
-            NodeType = varType;
+            NodeType = type;
             Info = varName;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Instantiate()
+        {
+            
+        }
+
     }
 }
