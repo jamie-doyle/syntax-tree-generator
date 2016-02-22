@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
@@ -16,11 +17,12 @@ namespace SyntaxTreeGen.Models
             Public,
             Private
         }
-        
+
         /// <summary>
         /// Creates a new method signature with parameters
         /// </summary>
         /// <param name="methodName">Name of this method</param>
+        /// <param name="isStatic">Dermines if the method is static</param>
         /// <param name="protection">Protection level</param>
         /// <param name="methodType">C# return type of this method</param>
         /// <param name="parameters">Parameters of this method</param>
@@ -40,6 +42,37 @@ namespace SyntaxTreeGen.Models
         }
 
         /// <summary>
+        /// Creates a new method signature with parameters and statements
+        /// </summary>
+        /// <param name="methodName">Name of this method</param>
+        /// <param name="isStatic">Dermines if the method is static</param>
+        /// <param name="protection">Protection level</param>
+        /// <param name="methodType">C# return type of this method</param>
+        /// <param name="parameters">Parameters of this method</param>
+        /// <param name="statements">Statements in the method</param>
+        public MethodNode(string methodName, bool isStatic, ProtectionLevelKind protection, Type methodType, 
+            IEnumerable<Node> parameters, IEnumerable<Node> statements) : base(2)
+        {
+            ProtectionLevel = protection;
+            IsStatic = isStatic;
+            MethodType = methodType;
+            Info = methodName;
+            
+            SetUpNodes();
+            
+            foreach (var parameter in parameters)
+            {
+                Subnodes.First().AddSubnode(parameter);
+            }
+
+            foreach (var statement in statements)
+            {
+                Subnodes.Last().AddSubnode(statement);
+            }
+        }
+
+
+        /// <summary>
         /// Adds a NodeListNode for parameters as Subnode[0], and for statements at Subnode[1]
         /// </summary>
         private void SetUpNodes()
@@ -47,13 +80,32 @@ namespace SyntaxTreeGen.Models
             AddSubnode(new NodeListNode());
             AddSubnode(new NodeListNode());
         }
+
+        /// <summary>
+        /// Access the parameters of this method
+        /// </summary>
+        /// <returns>Parameters</returns>
+        public IEnumerable<Node> Parameters()
+        {
+            return Subnodes.First().Subnodes;
+        }
+
+        /// <summary>
+        /// Access the statements in this method
+        /// </summary>
+        /// <returns>Statements</returns>
+        public IEnumerable<Node> Statements()
+        {
+            return Subnodes.Last().Subnodes;
+        } 
         
         /// <summary>
-        /// 
+        /// Return a string representation of the method
         /// </summary>
-        /// <returns></returns>
+        /// <returns>string</returns>
         public override string ToString()
         {
+            // TODO: a LOT going on here - refactor?
             var sb = new StringBuilder();
 
             // Build method signature
@@ -62,12 +114,13 @@ namespace SyntaxTreeGen.Models
             if (IsStatic)
                 sb.Append("static" + " ");
 
-            // Handle 'void' cases - fully qualified type for void is invalid
-            if (MethodType == typeof (void))
-                sb.Append("void" + " ");
-            else
-                sb.Append(MethodType + " ");
+            // Tidy up - remove "System.*" from classes, built-in types don't need full qualification
+            var methodString = MethodType.ToString();
 
+            if (methodString.Contains("System.Void"))
+                methodString = "void";
+
+            sb.Append(methodString + " ");
             sb.Append(Info + " ");
 
             // parameters

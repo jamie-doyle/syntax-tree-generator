@@ -9,8 +9,8 @@ namespace SyntaxTreeGen.Models
     /// </summary>
     public class ClassNode : Node
     {
-        public bool IsStatic { get; private set; }
-        public ProtectionLevelKind ProtectionLevel { get; private set; }
+        public bool IsStatic { get; }
+        public ProtectionLevelKind ProtectionLevel { get; }
 
         public enum ProtectionLevelKind
         {
@@ -43,13 +43,16 @@ namespace SyntaxTreeGen.Models
             sb.AppendLine();
 
             sb.Append("{");
+            sb.AppendLine();
 
             // Add methods
             foreach (var n in Subnodes)
-                sb.Append(n.ToString());
+                sb.Append(n);
 
             sb.AppendLine();
             sb.Append("}");
+
+            var formatted = FormatCSharp(sb.ToString());
 
             return sb.ToString();
         }

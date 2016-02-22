@@ -31,7 +31,7 @@ namespace SyntaxTreeGen.Models
         /// </summary>
         public OpKind Op { get; }
 
-        public OperatorNode(OpKind op, Node left, Node right) : base(2, left, right)
+        public OperatorNode(Node left, OpKind op, Node right) : base(2, left, right)
         {
             Op = op;
             Info = GetOperator(op);

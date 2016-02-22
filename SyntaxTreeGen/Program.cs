@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Mime;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using SyntaxTreeGen.Models;
 using static SyntaxTreeGen.Models.OperatorNode;
 
@@ -45,15 +46,30 @@ namespace SyntaxTreeGen
             var testClass = new ClassNode(
                 ClassNode.ProtectionLevelKind.Public, false, "FooClass",
                 // First method
-                new MethodNode("FooMethod", true, MethodNode.ProtectionLevelKind.Private, typeof(void),
-                    // Parameter
-                    new VarNode(typeof(int), "x")
-                )
-           );
+                new MethodNode("Capitalise", true, MethodNode.ProtectionLevelKind.Private, typeof(void),
+                    // Parameters
+                    new Node[]
+                    {
+                        new VarNode(typeof(int), "x")
+                    },
+                    // Statements
+                    new Node[]
+                    {
+                        // assign ten -> x
+                        new AssignNode(new VarNode(typeof(int), "ten"), new ConstantNode<int>(10)),
 
-            //var method = new MethodNode("Test", true, MethodNode.ProtectionLevelKind.Private, typeof(void) );
-            Console.WriteLine(testClass.ToString());
+                        // assing (x ^ 2) -> res
+                        new AssignNode(
+                            new VarNode(typeof(int), "res"), 
+                            new OperatorNode(new VarNode(typeof(int), "res"), OpKind.ToPowerOf, new ConstantNode<int>(2)) 
+                            )
+                    }
+                ) // END METHOD
+            );
+            
+            var res = testClass.ToString();
 
+            Console.WriteLine(res);
             Console.ReadLine();
         }
     }

@@ -8,9 +8,6 @@ namespace SyntaxTreeGen.Models
     /// </summary>
     public class VarNode : Node
     {
-        //public T NodeValue { get; set; }
-
-        public bool HasBeenDeclared { get; private set; }
         public Type NodeType { get; private set; }
 
         /// <summary>

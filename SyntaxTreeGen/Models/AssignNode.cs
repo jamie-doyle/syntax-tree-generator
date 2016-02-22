@@ -12,7 +12,7 @@ namespace SyntaxTreeGen.Models
     /// <summary>
     /// A node representing an assignment operation. 
     /// </summary>
-    public class AssignNode<T> : Node
+    public class AssignNode : Node
     {
         /// <summary>
         /// The assignment charater to use
@@ -29,7 +29,7 @@ namespace SyntaxTreeGen.Models
         {
             // Verify assignment is possible with the given parameters
             var leftType = left.GetType();
-            if (leftType != typeof(VarNode) || leftType != typeof(ConstantNode<>))
+            if (leftType != typeof(VarNode) && leftType != typeof(ConstantNode<>))
                 throw new ArgumentException("Assignment must be to a VarNode<T> or ConstantNode<T>.");
 
             Info = AssignChar;

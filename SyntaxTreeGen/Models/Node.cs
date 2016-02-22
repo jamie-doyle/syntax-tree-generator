@@ -78,11 +78,22 @@ namespace SyntaxTreeGen.Models
             var sb = new StringBuilder();
             
             foreach (var n in _subnodes)
-                sb.Append(n.ToString() + " ");
+                sb.Append(n + " ");
             
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Formats a string with C# line breaks and indentation, using MarkdownSharp
+        /// </summary>
+        /// <returns>Formatted code</returns>
+        public static string FormatCSharp(string rawCode)
+        {
+            var md = new MarkdownSharp.Markdown();
+            
+
+            return md.Transform(rawCode);
+        }
 
     }
 }
