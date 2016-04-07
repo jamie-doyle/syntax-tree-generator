@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace SyntaxTreeGen.Models
 {
+    [Serializable]
+    [XmlRoot("operator")]
     internal class OperatorNode : Node
     {
         /// <summary>
@@ -29,12 +32,32 @@ namespace SyntaxTreeGen.Models
         /// <summary>
         /// Gets the operator type for this operand
         /// </summary>
-        public OpKind Op { get; }
-
+        public OpKind Op { get; private set; }
+        
         public OperatorNode(Node left, OpKind op, Node right) : base(2, left, right)
         {
             Op = op;
             Info = GetOperator(op);
+        }
+
+        /// <summary>
+        /// Allows setting of operator kind (an OpKind enum) using a string
+        /// </summary>
+        [XmlElement("kind")]
+        public string StringOp
+        {
+            get { return Op.ToString(); }
+            set
+            {
+                if (value == null) throw new ArgumentNullException(nameof(value));
+                var parsedOp = (OpKind) Enum.Parse(typeof (OpKind), value);
+
+                if (Enum.IsDefined(typeof (OpKind), parsedOp))
+                    Op = parsedOp;
+                else
+                    throw new ArgumentException(
+                        "\"" + value + "\" is not a valid operator. ");
+            }   
         }
 
         /// <summary>
@@ -83,5 +106,6 @@ namespace SyntaxTreeGen.Models
         {
             return "(" +  Subnodes[0] + " " + GetOperator(Op) + " " + Subnodes[1] + ")";
         }
+        
     }
 }

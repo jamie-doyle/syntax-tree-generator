@@ -16,7 +16,7 @@ namespace SyntaxTreeGen.Models
         /// A textual representation of the function of this node
         /// </summary>
         public string Info { get; set; }
-     
+        
         /// <summary>
         /// Adds a node to the next available branch of this node.
         /// </summary>

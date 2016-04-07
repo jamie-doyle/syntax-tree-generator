@@ -1,0 +1,34 @@
+﻿<c:class xmlns:c="qub.ac.uk/jdoyle7/SyntaxTree/Class">
+  <c:name>
+    TestClass
+  </c:name>
+  <c:protectionLevel>
+    <!-- Must be Capitalised! -->
+    Public
+  </c:protectionLevel>
+  <c:isStatic>
+    true
+  </c:isStatic>
+  <c:methods>
+    <m:method xmlns:m="qub.ac.uk/jdoyle7/SyntaxTree/Class">
+      <m:name>
+        TestMethod
+      </m:name>
+      <m:protectionLevel>
+        Private
+      </m:protectionLevel>
+      <m:isStatic>
+        false
+      </m:isStatic>
+      <m:type>
+        void
+      </m:type>
+      <m:parameters>
+        <!-- TODO params -->
+      </m:parameters>
+      <m:statements>
+        <!-- TODO test statements -->
+      </m:statements>
+    </m:method>
+  </c:methods>
+</c:class>

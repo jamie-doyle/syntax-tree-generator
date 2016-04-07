@@ -2,20 +2,31 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace SyntaxTreeGen.Models
 {
+    [XmlRoot("method", Namespace = "qub.ac.uk/jdoyle7/SyntaxTree/Method")]
     public class MethodNode : Node
     {
+        [XmlAttribute("protectionLevel")]
         public ProtectionLevelKind ProtectionLevel { get; set; }
+
+        [XmlAttribute("isStatic")]
         public bool IsStatic { get; set; }
-        
-        public Type MethodType { get; }
+       
+        [XmlAttribute("type")]
+        public Type MethodType { get; set; }
         
         public enum ProtectionLevelKind
         {
             Public,
             Private
+        }
+
+        public MethodNode() : base(2)
+        {
+            SetUpNodes();
         }
 
         /// <summary>
