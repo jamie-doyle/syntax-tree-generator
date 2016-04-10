@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using MarkdownSharp;
 
 namespace SyntaxTreeGen.Models
 {
@@ -89,11 +90,20 @@ namespace SyntaxTreeGen.Models
         /// <returns>Formatted code</returns>
         public static string FormatCSharp(string rawCode)
         {
-            var md = new MarkdownSharp.Markdown();
+            var md = new Markdown();
             
-
             return md.Transform(rawCode);
         }
-
+        
+        /// <summary>
+        /// Defines available protection levels (must be capitalised to avoid use of protected
+        /// </summary>
+        public enum AccessLevel
+        {
+            Public,
+            Private,
+            Internal,
+            Protected
+        }
     }
 }

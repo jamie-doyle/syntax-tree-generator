@@ -21,24 +21,24 @@ namespace SyntaxTreeGen
 
             // Class
             var testClass = new ClassNode(
-                ClassNode.ProtectionLevelKind.Public, false, "FooClass",
+                ClassNode.AccessLevel.Public, false, "FooClass",
                 // First method
-                new MethodNode("Capitalise", true, MethodNode.ProtectionLevelKind.Private, "void",
+                new MethodNode("Capitalise", true, MethodNode.AccessLevel.Private, "void",
                     // Parameters
                     new Node[]
                     {
-                        new VarNode(typeof(int), "x")
+                        new VarNode("int", "x")
                     },
                     // Statements
                     new Node[]
                     {
                         // assign ten -> x
-                        new AssignNode(new VarNode(typeof(int), "ten"), new ConstantNode<int>(10)),
+                        new AssignNode(new VarNode("int", "ten"), new ConstantNode<int>(10)),
 
                         // assing (x ^ 2) -> res
                         new AssignNode(
-                            new VarNode(typeof(int), "res"), 
-                            new OperatorNode(new VarNode(typeof(int), "res"), OpKind.ToPowerOf, new ConstantNode<int>(2)) 
+                            new VarNode("int", "res"), 
+                            new OperatorNode(new VarNode("int", "res"), OpKind.ToPowerOf, new ConstantNode<int>(2)) 
                             )
                     }
                 ) // END METHOD
@@ -46,7 +46,7 @@ namespace SyntaxTreeGen
 
             //TODO: Generate tutorial programs from node representation (Deitel & Deitel)
             
-            var assignResX = new AssignNode( new VarNode(typeof (int), "res"), new VarNode(typeof(string), "x"));
+            var assignResX = new AssignNode( new VarNode("int", "res"), new VarNode("int", "x"));
 
             var innerIf = new IfNode(new ConstantNode<bool>(true), assignResX);
             

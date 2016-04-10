@@ -13,7 +13,7 @@ namespace SyntaxTreeGen.Models
     public class ClassNode : Node
     {
         [XmlAttribute("protectionLevel", Namespace = "class.protectionLevel")]
-        public ProtectionLevelKind ProtectionLevel { get; set; }
+        public AccessLevel ClassAccessLevel { get; set; }
 
         /// <summary>
         /// Parameterless contructor
@@ -36,54 +36,11 @@ namespace SyntaxTreeGen.Models
             get { return Info; }
             set { Info = value; }
         }
-
-        [XmlElement("methods", typeof(MethodNode))]
-        public Node[] Methods
-        {
-            get
-            {
-                return Subnodes.ToArray();
-            }
-            set
-            {
-                if (Subnodes.Count>0)
-                    Subnodes.Clear();
-                
-                foreach (var n in value ?? new Node[0])
-                    Subnodes.Add(n);
-            }
-        }
         
-        public enum ProtectionLevelKind
-        {
-            Public,
-            Private
-        }
-
-        /// <summary>
-        /// Creates a new method signature with parameters
-        /// </summary>
-        /// <param name="methodName">Name of this method</param>
-        /// <param name="isStatic">Dermines if the method is static</param>
-        /// <param name="protection">Protection level</param>
-        /// <param name="parameters">Parameters of this method</param>
-        public ClassNode(string methodName, bool isStatic, ProtectionLevelKind protection, params Node[] parameters) : base(int.MaxValue)
-        {
-            ProtectionLevel = protection;
-            IsStatic = isStatic;
-
-            Info = methodName;
-
-            foreach (var parameter in parameters)
-            {
-                AddSubnode(parameter);
-            }
-        }
-
-        public ClassNode(ProtectionLevelKind protectionLevel, bool isStatic, string className, params MethodNode[] methods) 
+        public ClassNode(AccessLevel classAccessLevel, bool isStatic, string className, params MethodNode[] methods) 
             : base(int.MaxValue)
         {
-            ProtectionLevel = protectionLevel;
+            ClassAccessLevel = classAccessLevel;
             IsStatic = isStatic;
             Info = className;
 
@@ -92,11 +49,11 @@ namespace SyntaxTreeGen.Models
                 AddSubnode(method);
             }
         }
-
+        
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append(ProtectionLevel.ToString().ToLower() + " " );
+            sb.Append(ClassAccessLevel.ToString().ToLower() + " " );
 
             if (IsStatic)
                 sb.Append("static ");

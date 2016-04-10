@@ -9,7 +9,7 @@ namespace SyntaxTreeGen.Models
     [XmlRoot("Method", Namespace = "qub.ac.uk/jdoyle7/SyntaxTree/Method")]
     public class MethodNode : Node
     {
-        public ProtectionLevelKind MethodProtectionLevel { get; set; }
+        public AccessLevel MethodAccessLevel { get; set; }
         
         public bool IsStatic { get; set; }
         
@@ -20,11 +20,6 @@ namespace SyntaxTreeGen.Models
             get { return Info; } set { Info = value; }
         }
         
-        public enum ProtectionLevelKind
-        {
-            Public,
-            Private
-        }
 
         /// <summary>
         /// Default constructor
@@ -39,12 +34,12 @@ namespace SyntaxTreeGen.Models
         /// </summary>
         /// <param name="methodName">Name of this method</param>
         /// <param name="isStatic">Dermines if the method is static</param>
-        /// <param name="methodProtection">Protection level</param>
+        /// <param name="methodAccess">Protection level</param>
         /// <param name="returnType">String indicating the return type of this method</param>
         /// <param name="parameters">Parameters of this method</param>
-        public MethodNode(string methodName, bool isStatic, ProtectionLevelKind methodProtection, string returnType, params Node[] parameters) : base(2)
+        public MethodNode(string methodName, bool isStatic, AccessLevel methodAccess, string returnType, params Node[] parameters) : base(2)
         {
-            MethodProtectionLevel = methodProtection;
+            MethodAccessLevel = methodAccess;
             IsStatic = isStatic;
             ReturnType = returnType;
             Info = methodName;
@@ -66,10 +61,10 @@ namespace SyntaxTreeGen.Models
         /// <param name="returnType">C# return type of this method</param>
         /// <param name="parameters">Parameters of this method</param>
         /// <param name="statements">Statements in the method</param>
-        public MethodNode(string methodName, bool isStatic, ProtectionLevelKind methodProtection, string returnType, 
+        public MethodNode(string methodName, bool isStatic, AccessLevel methodAccess, string returnType, 
             IEnumerable<Node> parameters, IEnumerable<Node> statements) : base(2)
         {
-            MethodProtectionLevel = methodProtection;
+            MethodAccessLevel = methodAccess;
             IsStatic = isStatic;
             ReturnType = returnType;
             Info = methodName;
@@ -125,7 +120,7 @@ namespace SyntaxTreeGen.Models
             var sb = new StringBuilder();
 
             // Build method signature
-            sb.Append(MethodProtectionLevel.ToString().ToLower() + " ");
+            sb.Append(MethodAccessLevel.ToString().ToLower() + " ");
 
             if (IsStatic)
                 sb.Append("static" + " ");

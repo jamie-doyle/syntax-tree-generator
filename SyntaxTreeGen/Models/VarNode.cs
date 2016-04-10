@@ -8,16 +8,22 @@ namespace SyntaxTreeGen.Models
     /// </summary>
     public class VarNode : Node
     {
-        public Type NodeType { get; private set; }
+        public string NodeType { get; set; }
 
         /// <summary>
         /// Constructor for VarNode
         /// </summary>
+        /// <param name="type"></param>
         /// <param name="varName"></param>
-        public VarNode(Type type, string varName) : base(0)
+        public VarNode(string type, string varName) : base(0)
         {
             NodeType = type;
             Info = varName;
+        }
+
+        public VarNode()
+        {
+            
         }
 
         /// <summary>

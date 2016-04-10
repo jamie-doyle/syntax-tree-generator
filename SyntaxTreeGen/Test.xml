@@ -1,17 +1,17 @@
 ﻿<class>
   <name>TestClass</name>
-  <protectionLevel> public </protectionLevel>
+  <accessLevel>public</accessLevel>
   <isStatic>true</isStatic>
-  <!--<method>
-      <protectionLevel>Private</protectionLevel>
-      <IsStatic>false</IsStatic>
+  <method>
+      <accessLevel>Private</accessLevel>
+      <isStatic>false</isStatic>
       <name>TestMethod</name>
       <returnType>void</returnType>
       <parameter>
         <name>x</name>
         <type>int</type>
       </parameter>
-      <statements>
+      <!--<statements>
         <assign>
           <variable>a</variable>
           <operator2>
@@ -20,13 +20,13 @@
             <intconst>1</intconst>
           </operator2>
         </assign>
-        --><!-- TODO test statements --><!--
+         TODO test statements 
         <methodCall>
           <dot>System</dot>
           <dot>out</dot>
           <dot>println</dot>
           <variable>string</variable>
         </methodCall>
-      </statements>
-  </method>-->
+      </statements>-->
+  </method>
 </class>
