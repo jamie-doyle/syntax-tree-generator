@@ -1,34 +1,32 @@
-﻿<c:class xmlns:c="qub.ac.uk/jdoyle7/SyntaxTree/Class">
-  <c:name>
-    TestClass
-  </c:name>
-  <c:protectionLevel>
-    <!-- Must be Capitalised! -->
-    Public
-  </c:protectionLevel>
-  <c:isStatic>
-    true
-  </c:isStatic>
-  <c:methods>
-    <m:method xmlns:m="qub.ac.uk/jdoyle7/SyntaxTree/Class">
-      <m:name>
-        TestMethod
-      </m:name>
-      <m:protectionLevel>
-        Private
-      </m:protectionLevel>
-      <m:isStatic>
-        false
-      </m:isStatic>
-      <m:type>
-        void
-      </m:type>
-      <m:parameters>
-        <!-- TODO params -->
-      </m:parameters>
-      <m:statements>
-        <!-- TODO test statements -->
-      </m:statements>
-    </m:method>
-  </c:methods>
-</c:class>
+﻿<class>
+  <name>TestClass</name>
+  <protectionLevel> public </protectionLevel>
+  <isStatic>true</isStatic>
+  <!--<method>
+      <protectionLevel>Private</protectionLevel>
+      <IsStatic>false</IsStatic>
+      <name>TestMethod</name>
+      <returnType>void</returnType>
+      <parameter>
+        <name>x</name>
+        <type>int</type>
+      </parameter>
+      <statements>
+        <assign>
+          <variable>a</variable>
+          <operator2>
+            <variable>x</variable>
+            <operator>+</operator>
+            <intconst>1</intconst>
+          </operator2>
+        </assign>
+        --><!-- TODO test statements --><!--
+        <methodCall>
+          <dot>System</dot>
+          <dot>out</dot>
+          <dot>println</dot>
+          <variable>string</variable>
+        </methodCall>
+      </statements>
+  </method>-->
+</class>

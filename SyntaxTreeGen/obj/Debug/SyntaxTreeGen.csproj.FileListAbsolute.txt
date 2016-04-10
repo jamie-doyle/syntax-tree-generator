@@ -4,3 +4,43 @@ C:\Users\Jamie\documents\visual studio 2015\Projects\SyntaxTreeGen\SyntaxTreeGen
 C:\Users\Jamie\documents\visual studio 2015\Projects\SyntaxTreeGen\SyntaxTreeGen\obj\Debug\SyntaxTreeGen.csprojResolveAssemblyReference.cache
 C:\Users\Jamie\documents\visual studio 2015\Projects\SyntaxTreeGen\SyntaxTreeGen\obj\Debug\SyntaxTreeGen.exe
 C:\Users\Jamie\documents\visual studio 2015\Projects\SyntaxTreeGen\SyntaxTreeGen\obj\Debug\SyntaxTreeGen.pdb
+C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\SyntaxTreeGen.exe.config
+C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\SyntaxTreeGen.exe
+C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\SyntaxTreeGen.pdb
+C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\MarkdownSharp.dll
+C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\Microsoft.CodeAnalysis.dll
+C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\Microsoft.CodeAnalysis.VisualBasic.Workspaces.dll
+C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\Microsoft.CodeAnalysis.Workspaces.Desktop.dll
+C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\Microsoft.CodeAnalysis.Workspaces.dll
+C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\System.Collections.Immutable.dll
+C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\System.Composition.AttributedModel.dll
+C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\System.Composition.Convention.dll
+C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\System.Composition.Hosting.dll
+C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\System.Composition.Runtime.dll
+C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\System.Composition.TypedParts.dll
+C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\System.Reflection.Metadata.dll
+C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\Microsoft.Build.dll
+C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\Microsoft.Build.Framework.dll
+C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\Microsoft.Build.Tasks.Core.dll
+C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\Microsoft.Build.Engine.dll
+C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\Microsoft.Build.Utilities.Core.dll
+C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\Microsoft.CodeAnalysis.xml
+C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\Microsoft.CodeAnalysis.CSharp.xml
+C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\Microsoft.CodeAnalysis.CSharp.Workspaces.xml
+C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\Microsoft.CodeAnalysis.VisualBasic.xml
+C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\Microsoft.CodeAnalysis.VisualBasic.Workspaces.xml
+C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\Microsoft.CodeAnalysis.Workspaces.xml
+C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\Microsoft.CodeAnalysis.Workspaces.Desktop.xml
+C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\System.Collections.Immutable.xml
+C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\System.Composition.AttributedModel.xml
+C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\System.Composition.Convention.xml
+C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\System.Composition.Hosting.xml
+C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\System.Composition.Runtime.xml
+C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\System.Composition.TypedParts.xml
+C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\System.Reflection.Metadata.xml
+C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\obj\Debug\SyntaxTreeGen.csprojResolveAssemblyReference.cache
+C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\obj\Debug\SyntaxTreeGen.exe
+C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\obj\Debug\SyntaxTreeGen.pdb

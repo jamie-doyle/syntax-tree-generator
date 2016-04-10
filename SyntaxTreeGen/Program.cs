@@ -23,7 +23,7 @@ namespace SyntaxTreeGen
             var testClass = new ClassNode(
                 ClassNode.ProtectionLevelKind.Public, false, "FooClass",
                 // First method
-                new MethodNode("Capitalise", true, MethodNode.ProtectionLevelKind.Private, typeof(void),
+                new MethodNode("Capitalise", true, MethodNode.ProtectionLevelKind.Private, "void",
                     // Parameters
                     new Node[]
                     {
@@ -44,8 +44,8 @@ namespace SyntaxTreeGen
                 ) // END METHOD
             );
 
-            //TODO: Generate tutorial programs from node representation
-
+            //TODO: Generate tutorial programs from node representation (Deitel & Deitel)
+            
             var assignResX = new AssignNode( new VarNode(typeof (int), "res"), new VarNode(typeof(string), "x"));
 
             var innerIf = new IfNode(new ConstantNode<bool>(true), assignResX);

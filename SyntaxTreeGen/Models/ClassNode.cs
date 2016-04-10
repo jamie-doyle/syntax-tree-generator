@@ -22,37 +22,15 @@ namespace SyntaxTreeGen.Models
         {
 
         }
-
-        /// <summary>
-        /// Creates a new method signature with parameters
-        /// </summary>
-        /// <param name="methodName">Name of this method</param>
-        /// <param name="isStatic">Dermines if the method is static</param>
-        /// <param name="protection">Protection level</param>
-        /// <param name="parameters">Parameters of this method</param>
-        public ClassNode(string methodName, bool isStatic, ProtectionLevelKind protection, params Node[] parameters) : base(int.MaxValue)
-        {
-            ProtectionLevel = protection;
-            IsStatic = isStatic;
-
-            Info = methodName;
-            
-            foreach (var parameter in parameters)
-            {
-                AddSubnode(parameter);
-            }
-        }
-
+        
         /// <summary>
         /// Is the method static?
         /// </summary>
-        [XmlElement("isStatic")]
         public bool IsStatic { get; set; }
 
         /// <summary>
         /// Get/set the class name
         /// </summary>
-        [XmlElement("name")]
         public string Name
         {
             get { return Info; }
@@ -81,7 +59,27 @@ namespace SyntaxTreeGen.Models
             Public,
             Private
         }
-        
+
+        /// <summary>
+        /// Creates a new method signature with parameters
+        /// </summary>
+        /// <param name="methodName">Name of this method</param>
+        /// <param name="isStatic">Dermines if the method is static</param>
+        /// <param name="protection">Protection level</param>
+        /// <param name="parameters">Parameters of this method</param>
+        public ClassNode(string methodName, bool isStatic, ProtectionLevelKind protection, params Node[] parameters) : base(int.MaxValue)
+        {
+            ProtectionLevel = protection;
+            IsStatic = isStatic;
+
+            Info = methodName;
+
+            foreach (var parameter in parameters)
+            {
+                AddSubnode(parameter);
+            }
+        }
+
         public ClassNode(ProtectionLevelKind protectionLevel, bool isStatic, string className, params MethodNode[] methods) 
             : base(int.MaxValue)
         {
@@ -115,11 +113,8 @@ namespace SyntaxTreeGen.Models
 
             sb.AppendLine();
             sb.Append("}");
-
-            var formatted = FormatCSharp(sb.ToString());
-
+            
             return sb.ToString();
         }
-    }
-    
+    }   
 }

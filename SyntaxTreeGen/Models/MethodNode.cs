@@ -6,17 +6,19 @@ using System.Xml.Serialization;
 
 namespace SyntaxTreeGen.Models
 {
-    [XmlRoot("method", Namespace = "qub.ac.uk/jdoyle7/SyntaxTree/Method")]
+    [XmlRoot("Method", Namespace = "qub.ac.uk/jdoyle7/SyntaxTree/Method")]
     public class MethodNode : Node
     {
-        [XmlAttribute("protectionLevel")]
-        public ProtectionLevelKind ProtectionLevel { get; set; }
-
-        [XmlAttribute("isStatic")]
+        public ProtectionLevelKind MethodProtectionLevel { get; set; }
+        
         public bool IsStatic { get; set; }
-       
-        [XmlAttribute("type")]
-        public Type MethodType { get; set; }
+        
+        public string ReturnType { get; set; }
+
+        public string Name
+        {
+            get { return Info; } set { Info = value; }
+        }
         
         public enum ProtectionLevelKind
         {
@@ -24,24 +26,27 @@ namespace SyntaxTreeGen.Models
             Private
         }
 
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public MethodNode() : base(2)
         {
             SetUpNodes();
         }
-
+        
         /// <summary>
         /// Creates a new method signature with parameters
         /// </summary>
         /// <param name="methodName">Name of this method</param>
         /// <param name="isStatic">Dermines if the method is static</param>
-        /// <param name="protection">Protection level</param>
-        /// <param name="methodType">C# return type of this method</param>
+        /// <param name="methodProtection">Protection level</param>
+        /// <param name="returnType">String indicating the return type of this method</param>
         /// <param name="parameters">Parameters of this method</param>
-        public MethodNode(string methodName, bool isStatic, ProtectionLevelKind protection, Type methodType, params Node[] parameters) : base(2)
+        public MethodNode(string methodName, bool isStatic, ProtectionLevelKind methodProtection, string returnType, params Node[] parameters) : base(2)
         {
-            ProtectionLevel = protection;
+            MethodProtectionLevel = methodProtection;
             IsStatic = isStatic;
-            MethodType = methodType;
+            ReturnType = returnType;
             Info = methodName;
             
             SetUpNodes();
@@ -57,16 +62,16 @@ namespace SyntaxTreeGen.Models
         /// </summary>
         /// <param name="methodName">Name of this method</param>
         /// <param name="isStatic">Dermines if the method is static</param>
-        /// <param name="protection">Protection level</param>
-        /// <param name="methodType">C# return type of this method</param>
+        /// <param name="methodProtection">Protection level</param>
+        /// <param name="returnType">C# return type of this method</param>
         /// <param name="parameters">Parameters of this method</param>
         /// <param name="statements">Statements in the method</param>
-        public MethodNode(string methodName, bool isStatic, ProtectionLevelKind protection, Type methodType, 
+        public MethodNode(string methodName, bool isStatic, ProtectionLevelKind methodProtection, string returnType, 
             IEnumerable<Node> parameters, IEnumerable<Node> statements) : base(2)
         {
-            ProtectionLevel = protection;
+            MethodProtectionLevel = methodProtection;
             IsStatic = isStatic;
-            MethodType = methodType;
+            ReturnType = returnType;
             Info = methodName;
             
             SetUpNodes();
@@ -120,18 +125,17 @@ namespace SyntaxTreeGen.Models
             var sb = new StringBuilder();
 
             // Build method signature
-            sb.Append(ProtectionLevel.ToString().ToLower() + " ");
+            sb.Append(MethodProtectionLevel.ToString().ToLower() + " ");
 
             if (IsStatic)
                 sb.Append("static" + " ");
 
-            // Tidy up - remove "System.*" from classes, built-in types don't need full qualification
-            var methodString = MethodType.ToString();
-
-            if (methodString.Contains("System.Void"))
-                methodString = "void";
-
-            sb.Append(methodString + " ");
+            // Stop full qualification of "void" (this doesn't work in C#)
+            if (ReturnType.Contains("System.Void"))
+                sb.Append("void ");
+            else
+                sb.Append(ReturnType + " ");
+            
             sb.Append(Info + " ");
 
             // parameters
