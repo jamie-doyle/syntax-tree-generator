@@ -29,12 +29,21 @@ namespace SyntaxTreeGen.Models
         {
             // Verify assignment is possible with the given parameters
             var leftType = left.GetType();
-            if (leftType != typeof(VarNode) && leftType != typeof(ConstantNode<>))
-                throw new ArgumentException("Assignment must be to a VarNode<T> or ConstantNode<T>.");
+            var rightType = right.GetType();
+
+            if (leftType != typeof(VarNode))
+                throw new ArgumentException("Assignment must be to a VarNode.");
+
+            if (rightType != typeof(VarNode) || rightType != typeof(ConstantNode) )
+                throw new ArgumentException("Cannot assign from a "+rightType);
 
             Info = AssignChar;
         }
-        
+
+        public AssignNode()
+        {
+        }
+
         /// <summary>
         /// Returns a string representation of the assignment operation. The variable assigned by 
         /// this AssignNode is considered declared upon the first call of this method.

@@ -95,20 +95,29 @@ namespace SyntaxTreeGen.Models
         /// <summary>
         /// Access the parameters of this method
         /// </summary>
-        /// <returns>Parameters</returns>
-        public IEnumerable<Node> Parameters()
+        public IEnumerable<Node> Parameters
         {
-            return Subnodes.First().Subnodes;
+            get {
+                // return empty list if no params set
+                return Subnodes.First().Subnodes.Any() ? 
+                    (IEnumerable<Node>) Subnodes.First().Subnodes : new Node[] {};
+            }
+            set { Subnodes[0] = new NodeListNode((Node[])value); }
         }
 
         /// <summary>
         /// Access the statements in this method
         /// </summary>
-        /// <returns>Statements</returns>
-        public IEnumerable<Node> Statements()
+        public IEnumerable<Node> Statements
         {
-            return Subnodes.Last().Subnodes;
-        } 
+            get
+            {
+                // Return an empty list if no statements set
+                return Subnodes.Last().Subnodes.Any() ?
+                 (IEnumerable<Node>)Subnodes.Last().Subnodes : new Node[] { };
+            }
+            set { Subnodes[1] = new NodeListNode((Node[])value); }
+        }
         
         /// <summary>
         /// Return a string representation of the method

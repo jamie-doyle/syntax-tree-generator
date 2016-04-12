@@ -1,32 +1,35 @@
 ﻿<class>
-  <name>TestClass</name>
   <accessLevel>public</accessLevel>
   <isStatic>true</isStatic>
+  <name>TestClass</name>
   <method>
-      <accessLevel>Private</accessLevel>
-      <isStatic>false</isStatic>
-      <name>TestMethod</name>
+      <accessLevel>private</accessLevel>
+      <isStatic>true</isStatic>
       <returnType>void</returnType>
-      <parameter>
+      <name>Main</name>
+        <parameter>
         <name>x</name>
         <type>int</type>
       </parameter>
-      <!--<statements>
+      <statements>
         <assign>
-          <variable>a</variable>
-          <operator2>
-            <variable>x</variable>
-            <operator>+</operator>
-            <intconst>1</intconst>
-          </operator2>
+          <!-- Assignment requires the left-side first -->
+          <variable>x</variable>
+          <variable>10</variable>
         </assign>
-         TODO test statements 
-        <methodCall>
+        <operation>
+          <!-- Operations s -->
+          <operator>+</operator>
+          <variable>10</variable>
+          <variable>5</variable>
+        </operation>
+        
+        <!--<methodCall>
           <dot>System</dot>
           <dot>out</dot>
           <dot>println</dot>
           <variable>string</variable>
-        </methodCall>
-      </statements>-->
+        </methodCall>-->
+      </statements>
   </method>
 </class>

@@ -9,10 +9,8 @@ namespace SyntaxTreeGen.Models
     /// <summary>
     /// Represents classes
     /// </summary>
-    [XmlRoot("class", Namespace = "qub.ac.uk/jdoyle7/SyntaxTree/Class")]
     public class ClassNode : Node
     {
-        [XmlAttribute("protectionLevel", Namespace = "class.protectionLevel")]
         public AccessLevel ClassAccessLevel { get; set; }
 
         /// <summary>
