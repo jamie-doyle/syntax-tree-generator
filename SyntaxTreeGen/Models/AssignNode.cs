@@ -30,7 +30,7 @@ namespace SyntaxTreeGen.Models
             // Verify assignment is possible with the given parameters
             var leftType = left.GetType();
             var rightType = right.GetType();
-
+            
             if (leftType != typeof(VarNode))
                 throw new ArgumentException("Assignment must be to a VarNode.");
 

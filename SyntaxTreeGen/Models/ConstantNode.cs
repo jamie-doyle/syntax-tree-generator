@@ -8,7 +8,7 @@ namespace SyntaxTreeGen.Models
     /// </summary>
     class ConstantNode : Node
     {
-        public object ConstVal { get; private set; }
+        public object ConstVal { get; internal set; }
         
         /// <summary>
         /// Creates a node with no children

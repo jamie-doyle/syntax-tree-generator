@@ -114,7 +114,16 @@
     <Compile Include="Models\NodeListNode.cs" />
     <Compile Include="Models\OperatorNode.cs" />
     <Compile Include="Models\VarNode.cs" />
-    <Compile Include="Models\XmlSyntaxTree.cs" />
+    <Compile Include="XML\Parsers\AssignParser.cs" />
+    <Compile Include="XML\Parsers\ClassParser.cs" />
+    <Compile Include="XML\Parsers\ConstantParser.cs" />
+    <Compile Include="XML\Parsers\MethodParser.cs" />
+    <Compile Include="XML\Parsers\Parser.cs" />
+    <Compile Include="XML\Parsers\StatementsParser.cs" />
+    <Compile Include="XML\Parsers\VarParser.cs" />
+    <Compile Include="XML\StaticParser.cs" />
+    <Compile Include="XML\Exception.cs" />
+    <Compile Include="XML\Document.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

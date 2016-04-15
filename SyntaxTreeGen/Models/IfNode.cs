@@ -7,6 +7,10 @@ namespace SyntaxTreeGen.Models
     {
         private static int _depth;
 
+        public IfNode() : base(3)
+        {
+        }
+
         /// <summary>
         /// Creates an if node
         /// </summary>
@@ -34,6 +38,24 @@ namespace SyntaxTreeGen.Models
                     "An \"if\" node requires a termination condition.");
 
             Info = "if";
+        }
+
+        public Node Condition
+        {
+            get { return Subnodes[0]; }
+            set { Subnodes[0] = value; }
+        }
+
+        public Node Body
+        {
+            get { return Subnodes[1]; }
+            set { Subnodes[1] = value; }
+        }
+
+        public Node Else
+        {
+            get { return Subnodes[2]; }
+            set { Subnodes[2] = value; }
         }
 
         public override string ToString()

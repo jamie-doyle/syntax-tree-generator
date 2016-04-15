@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using MarkdownSharp;
 
@@ -104,6 +105,22 @@ namespace SyntaxTreeGen.Models
             Private,
             Internal,
             Protected
+        }
+
+        /// <summary>
+        /// Get the access level associated with a string
+        /// </summary>
+        /// <param name="text">Access level to fetch</param>
+        /// <returns></returns>
+        internal static Node.AccessLevel GetAccessLevel(string text)
+        {
+            AccessLevel res;
+
+            if (Enum.TryParse(text, true, out res))
+                return res;
+            
+            // If not found, throw error
+            throw new InvalidDataException("\"" + text + "\" is not a valid access level");
         }
     }
 }
