@@ -18,10 +18,6 @@ namespace SyntaxTreeGen.XML.Parsers
             // While not on a "</class>" tag
             while (!((Reader.NodeType == XmlNodeType.EndElement) && (Reader.Name.Equals("class"))))
             {
-                // Skip comments
-                while (Reader.NodeType == XmlNodeType.Comment)
-                    Reader.Read();
-                
                 // Get the attribute type
                 var attribute = Reader.Name.ToLower();
 
@@ -30,16 +26,19 @@ namespace SyntaxTreeGen.XML.Parsers
                     case "accesslevel":
                         Reader.Read();
                         tmp.ClassAccessLevel = Node.GetAccessLevel(Reader.Value);
+                        Reader.Read();
                         ReadEndTag(attribute);
                         break;
                     case "name":
                         Reader.Read();
                         tmp.Info = Reader.Value;
+                        Reader.Read();
                         ReadEndTag(attribute);
                         break;
                     case "isstatic":
                         Reader.Read();
                         tmp.IsStatic = bool.Parse(Reader.Value);
+                        Reader.Read();
                         ReadEndTag(attribute);
                         break;
                     case "method":
@@ -54,7 +53,7 @@ namespace SyntaxTreeGen.XML.Parsers
                         throw new InvalidDataException();
                 }  
             }
-
+            
             ReadEndTag("class");
             Result = tmp;
         } 

@@ -15,32 +15,26 @@ namespace SyntaxTreeGen.XML.Parsers
             
             // Get right (assignment value)
             Node right;
-            Parser parser;
             
             switch (Reader.Name.ToLower().Trim())
             {
                 case "variable":
-                    parser = new VarParser(Reader);
-                    right = parser.Result;
-                    ReadEndTag("variable");
+                    right = new VarParser(Reader).Result;
                     break;
                 case "constant":
-                    parser = new ConstantParser(Reader);
-                    right = parser.Result;
-                    ReadEndTag("constant");
+                    right = new ConstantParser(Reader).Result;
                     break;
                 case "operation":
-                    // TODO OperationParser(Reader);
-                    //right = parser.Result;
-                    ReadEndTag("variable");
+                    right = new OperationParser(Reader).Result;
                     break;
                 default:
                     throw Exception.Generate(reader, Exception.ErrorType.BadAssignRight);
             }
             
+            // close node and set result
+            Reader.Read();
             ReadEndTag("assign");
             Result = new AssignNode(left, right);
-
         }
     }
 }

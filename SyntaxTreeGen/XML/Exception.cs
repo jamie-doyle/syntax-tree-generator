@@ -19,6 +19,9 @@ namespace SyntaxTreeGen.XML
             var linePos = info.LinePosition;
 
             string msg;
+
+            // Error messages should fit the format:
+            // "XML could not be parsed because {MESSAGE}."
             switch (error)
             {
                 case ErrorType.Statements:
@@ -42,8 +45,8 @@ namespace SyntaxTreeGen.XML
                 case ErrorType.TooManyOperands:
                     msg = "the operation contains more than two operands";
                     break;
-                case ErrorType.TooManyOperators:
-                    msg = "the operation contains more than one operator";
+                case ErrorType.NoOperator:
+                    msg = "the expression does not contain an operator";
                     break;
                 case ErrorType.UnknownSubnode:
                     msg = "an unexpected sunode was found";
@@ -70,7 +73,7 @@ namespace SyntaxTreeGen.XML
             Conditions,
 
             TooManyOperands,
-            TooManyOperators
+            NoOperator
         }
     }
 }

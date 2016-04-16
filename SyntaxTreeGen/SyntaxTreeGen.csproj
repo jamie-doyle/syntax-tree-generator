@@ -118,6 +118,7 @@
     <Compile Include="XML\Parsers\ClassParser.cs" />
     <Compile Include="XML\Parsers\ConstantParser.cs" />
     <Compile Include="XML\Parsers\MethodParser.cs" />
+    <Compile Include="XML\Parsers\OperationParser.cs" />
     <Compile Include="XML\Parsers\Parser.cs" />
     <Compile Include="XML\Parsers\StatementsParser.cs" />
     <Compile Include="XML\Parsers\VarParser.cs" />
@@ -136,7 +137,9 @@
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Test.xml" />
+    <Content Include="Test.xml">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

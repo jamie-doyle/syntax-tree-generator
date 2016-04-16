@@ -13,19 +13,13 @@ namespace SyntaxTreeGen.XML.Parsers
         /// Parses XML data to a ClassNode
         /// </summary>
         /// <param name="xmlreader">Reader pointed to a method element</param>
-        internal MethodParser(XmlReader xmlreader) : base (xmlreader, "class")
+        internal MethodParser(XmlReader xmlreader) : base (xmlreader, "method")
         {
             var tmp = new MethodNode();
 
             // While not at a "</method>" tag
             while (!((Reader.NodeType == XmlNodeType.EndElement) && (Reader.Name.Equals("method"))))
             {
-                // skip comments
-                while (Reader.NodeType == XmlNodeType.Comment)
-                {
-                    Reader.Read();
-                }
-
                 // Get the attribute type
                 var attribute = Reader.Name.ToLower();
 
@@ -35,19 +29,22 @@ namespace SyntaxTreeGen.XML.Parsers
                         // advance to data and read it
                         Reader.Read();
                         tmp.MethodAccessLevel = Node.GetAccessLevel(Reader.Value);
+                        Reader.Read();
                         ReadEndTag(attribute);
                         break;
                     case "isstatic":
                         Reader.Read();
                         tmp.IsStatic = bool.Parse(Reader.Value);
+                        Reader.Read();
                         ReadEndTag(attribute);
                         break;
                     case "name":
                         Reader.Read();
                         tmp.Info = Reader.Value;
+                        Reader.Read();
                         ReadEndTag(attribute);
                         break;
-                    case "parameter":
+                    case "parameters":
                         Reader.Read();
 
                         // Parse each <variable> in the <parameters> list
@@ -66,13 +63,14 @@ namespace SyntaxTreeGen.XML.Parsers
                         }
                         
                         // Add parameters to Method
-                        tmp.Parameters = paramList;
+                        tmp.Parameters = paramList.ToArray();
                         ReadEndTag(attribute);
                         break;
 
                     case "returntype":
                         Reader.Read();
                         tmp.ReturnType = Reader.Value;
+                        Reader.Read();
                         ReadEndTag(attribute);
                         break;
 

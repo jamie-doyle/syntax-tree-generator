@@ -10,20 +10,24 @@ namespace SyntaxTreeGen.XML.Parsers
 {
     class StatementsParser : Parser
     {
-        internal StatementsParser(XmlReader reader) : base(reader, "statements")
+        internal StatementsParser(XmlReader xmlreader) : base(xmlreader, "statements")
         {
             Result = new NodeListNode();
 
-            while (reader.Read())
+            // While not at a </statements> tag
+            while (!((Reader.NodeType == XmlNodeType.EndElement) && (Reader.Name.Equals("statements"))))
             {
                 // get node type
-                var kind = reader.Name.ToLower().Trim();
+                var kind = Reader.Name.ToLower().Trim();
                 switch (kind)
                 {
                     case "assign":
-                        var parse = new AssignParser(reader);
-                        Result.AddSubnode(parse.Result);
-                        continue;
+                        Result.AddSubnode(new AssignParser(Reader).Result);
+                        break;
+                    case "operation":
+                        Result.AddSubnode(new OperationParser(Reader).Result);
+                        break;
+
                     case "call":
                         // todo ParseCall(reader);
                         continue;
@@ -31,8 +35,7 @@ namespace SyntaxTreeGen.XML.Parsers
                         // todo ParseIf(reader);
                         continue;
                     case "variable":
-                        var parser = new VarParser(reader);
-                        Result.AddSubnode(parser.Result);
+                        Result.AddSubnode(new VarParser(Reader).Result);
                         continue;
                     
                     // todo a loop node (e.g. while)

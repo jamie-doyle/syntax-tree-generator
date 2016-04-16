@@ -340,7 +340,7 @@ namespace SyntaxTreeGen.XML
                         break;
                     case "operator":
                         if (res.Op > 0)
-                            throw Exception.Generate(reader, Exception.ErrorType.TooManyOperators);
+                            throw Exception.Generate(reader, Exception.ErrorType.NoOperator);
                         reader.Read();
                         opkind = OperatorNode.GetOperator(reader.Value);
 
@@ -361,7 +361,7 @@ namespace SyntaxTreeGen.XML
                 else if (right == null)
                     right = res;
                 else
-                    throw Exception.Generate(reader, Exception.ErrorType.TooManyOperators);
+                    throw Exception.Generate(reader, Exception.ErrorType.NoOperator);
             }
 
             throw Exception.Generate(reader, Exception.ErrorType.UnclosedTag);

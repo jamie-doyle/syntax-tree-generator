@@ -34,7 +34,7 @@ namespace SyntaxTreeGen.Models
             if (leftType != typeof(VarNode))
                 throw new ArgumentException("Assignment must be to a VarNode.");
 
-            if (rightType != typeof(VarNode) || rightType != typeof(ConstantNode) )
+            if (rightType != typeof(VarNode) && rightType != typeof(ConstantNode) )
                 throw new ArgumentException("Cannot assign from a "+rightType);
 
             Info = AssignChar;

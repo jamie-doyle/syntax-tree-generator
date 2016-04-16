@@ -10,12 +10,12 @@ namespace SyntaxTreeGen.XML.Parsers
 {
     class VarParser : Parser
     {
-        internal VarParser(XmlReader reader) : base(reader, "variable")
+        internal VarParser(XmlReader xmlreader) : base(xmlreader, "variable")
         {
             var tmp = new VarNode();
 
             // While not at a </variable>
-            while (!((reader.NodeType == XmlNodeType.EndElement) && (reader.Name.Equals("method"))))
+            while (!((Reader.NodeType == XmlNodeType.EndElement) && (Reader.Name.Equals("variable"))))
             {
                 // Get the attribute type, then advance to the data
                 var attribute = Reader.Name.ToLower();
@@ -24,12 +24,14 @@ namespace SyntaxTreeGen.XML.Parsers
                 {
                     case "name":
                         Reader.Read();
-                        tmp.Info = reader.Value;
+                        tmp.Info = Reader.Value;
+                        Reader.Read();
                         ReadEndTag(attribute);
                         break;
                     case "type":
-                        reader.Read();
-                        tmp.NodeType = reader.Value;
+                        Reader.Read();
+                        tmp.NodeType = Reader.Value;
+                        Reader.Read();
                         ReadEndTag(attribute);
                         break;
                     default:
@@ -37,6 +39,7 @@ namespace SyntaxTreeGen.XML.Parsers
                 }
             }
 
+            Result = tmp;
             ReadEndTag("variable");
         }
     }

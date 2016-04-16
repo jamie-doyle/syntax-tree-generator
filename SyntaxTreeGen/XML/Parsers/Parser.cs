@@ -34,8 +34,7 @@ namespace SyntaxTreeGen.XML.Parsers
         protected void ReadEndTag(string tag)
         {
             // Verify the </tag> exists
-            Reader.Read();
-            if ( !(Reader.NodeType == XmlNodeType.EndElement &&  Reader.Name.ToLower() != tag) )
+            if ( (Reader.NodeType != XmlNodeType.EndElement &&  Reader.Name.ToLower() != tag) )
                 throw Exception.Generate(Reader, Exception.ErrorType.UnclosedTag);
 
             // Move reader past end tag

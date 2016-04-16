@@ -13,10 +13,8 @@
           <type>int</type>  
         </variable>
       </parameters>
-      <statements>
+      <!--<statements>
         <assign>
-          <!-- Assignment requires the left-side first (so a variable must be the first subnode here).
-               This example parses to "x = 10" -->
           <variable>
             <name>x</name>
             <type>int</type>
@@ -26,12 +24,10 @@
           </constant>
         </assign>
         <operation>
-          <!-- Operations can be in any order  so long as two operands and an operator are present. 
-               This example parses to "10 + 5" -->
-          <operator>+</operator>
           <variable>
             <name>x</name>
           </variable>
+          <operator>+</operator>
           <constant>
             <value>5</value>
           </constant>
@@ -39,8 +35,6 @@
 
         <if>
           <condition>
-            
-            
             <operation>
               <constant>
                 <value>5</value>
@@ -50,27 +44,25 @@
                 <value>10</value>
               </constant>
             </operation>
-          
-            
           </condition>
           <body>
             <statements>
-              <!-- Some statements -->
+              --><!-- Some statements --><!--
             </statements>
           </body>
           <elseBody>
             <statements>
-              <!-- Some statements -->
+              --><!-- Some statements --><!--
             </statements>
           </elseBody>
         </if>
         
-        <!--<methodCall>
+        --><!--<methodCall>
           <dot>System</dot>
           <dot>out</dot>
           <dot>println</dot>
           <variable>string</variable>
-        </methodCall>-->
-      </statements>
+        </methodCall>--><!--
+      </statements>-->
   </method>
 </class>
