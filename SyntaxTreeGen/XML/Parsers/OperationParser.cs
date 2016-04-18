@@ -21,12 +21,10 @@ namespace SyntaxTreeGen.XML.Parsers
             
             // Get the operator
             Reader.Read();
-            OperatorNode.OpKind parsedOp;
-            var isValidOperator = Enum.TryParse(Reader.Value, true, out parsedOp);
+            var parsedOp = OperatorNode.GetOperator(Reader.Value);
+            Reader.Read();
+            ReadEndTag("operator");
 
-            if (!isValidOperator)
-                throw Exception.Generate(Reader, Exception.ErrorType.NoOperator);
-            
             // Get right operand
             var right = ParseOperand();
 
@@ -48,7 +46,6 @@ namespace SyntaxTreeGen.XML.Parsers
                     tmp = new VarParser(Reader).Result;
                     break;
                 case "constant":
-                    Reader.Read();
                     tmp = new ConstantParser(Reader).Result;
                     break;
                 case "operation":

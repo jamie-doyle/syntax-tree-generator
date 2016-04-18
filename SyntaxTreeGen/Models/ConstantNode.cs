@@ -24,6 +24,10 @@ namespace SyntaxTreeGen.Models
         {
             
         }
-        
+
+        public override string ToString()
+        {
+            return ConstVal.ToString();
+        }
     }
 }

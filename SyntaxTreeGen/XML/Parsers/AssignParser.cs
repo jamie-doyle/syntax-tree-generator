@@ -32,7 +32,6 @@ namespace SyntaxTreeGen.XML.Parsers
             }
             
             // close node and set result
-            Reader.Read();
             ReadEndTag("assign");
             Result = new AssignNode(left, right);
         }

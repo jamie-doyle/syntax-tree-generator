@@ -70,6 +70,7 @@
       <HintPath>..\packages\System.Collections.Immutable.1.1.37\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Composition.AttributedModel, Version=1.0.27.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Composition.1.0.27\lib\portable-net45+win8+wp8+wpa81\System.Composition.AttributedModel.dll</HintPath>
       <Private>True</Private>
@@ -107,6 +108,7 @@
     <Compile Include="Models\ConstantNode.cs" />
     <Compile Include="Models\IfNode.cs" />
     <Compile Include="Models\IntConNode.cs" />
+    <Compile Include="Models\ExternalClassNode.cs" />
     <Compile Include="Models\MethodNode.cs" />
     <Compile Include="Models\ClassNode.cs" />
     <Compile Include="Models\Node - Copy.cs" />
@@ -114,14 +116,17 @@
     <Compile Include="Models\NodeListNode.cs" />
     <Compile Include="Models\OperatorNode.cs" />
     <Compile Include="Models\VarNode.cs" />
+    <Compile Include="Models\WhileNode.cs" />
     <Compile Include="XML\Parsers\AssignParser.cs" />
     <Compile Include="XML\Parsers\ClassParser.cs" />
     <Compile Include="XML\Parsers\ConstantParser.cs" />
+    <Compile Include="XML\Parsers\IfParser.cs" />
     <Compile Include="XML\Parsers\MethodParser.cs" />
     <Compile Include="XML\Parsers\OperationParser.cs" />
     <Compile Include="XML\Parsers\Parser.cs" />
     <Compile Include="XML\Parsers\StatementsParser.cs" />
     <Compile Include="XML\Parsers\VarParser.cs" />
+    <Compile Include="XML\Parsers\WhileParser.cs" />
     <Compile Include="XML\StaticParser.cs" />
     <Compile Include="XML\Exception.cs" />
     <Compile Include="XML\Document.cs" />

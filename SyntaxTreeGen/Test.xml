@@ -10,30 +10,87 @@
       <parameters>
         <variable>
           <name>x</name>
-          <type>int</type>  
+          <type>int</type>
         </variable>
       </parameters>
-      <!--<statements>
+      <statements>
         <assign>
           <variable>
             <name>x</name>
             <type>int</type>
           </variable>
-          <constant>
-            <value>10</value>
-          </constant>
+          <operation>
+            <variable>
+              <name>x</name>
+            </variable>
+            <operator>+</operator>
+            <constant>
+              <value>5</value>
+            </constant>
+          </operation>
         </assign>
-        <operation>
-          <variable>
-            <name>x</name>
-          </variable>
-          <operator>+</operator>
-          <constant>
-            <value>5</value>
-          </constant>
-        </operation>
 
         <if>
+          <condition>
+            <operation>
+              <constant>
+                <value>x</value>
+              </constant>
+              <operator>&gt;</operator>
+              <constant>
+                <value>10</value>
+              </constant>
+            </operation>
+          </condition>
+          <body>
+            <statements>
+              <operation>
+                <variable>
+                  <name>x</name>
+                </variable>
+                <operator>-</operator>
+                <constant>
+                  <value>10</value>
+                </constant>
+              </operation>
+            </statements>
+          </body>
+          <else>
+            <statements>
+              <operation>
+                <variable>
+                  <name>x</name>
+                </variable>
+                <operator>+</operator>
+                <constant>
+                  <value>10</value>
+                </constant>
+              </operation>
+            </statements>
+          </else>
+        </if>
+        
+        <while>
+          <condition>
+            <operation>
+              <variable>
+                <name>x</name>
+              </variable>
+              <operator>==</operator>
+              <constant>
+                <value>5</value>
+              </constant>
+            </operation>
+          </condition>
+          
+          <body>
+            
+          </body>
+          
+        </while>
+        
+      </statements>
+        <!--<if>
           <condition>
             <operation>
               <constant>
@@ -47,17 +104,16 @@
           </condition>
           <body>
             <statements>
-              --><!-- Some statements --><!--
+               Some statements 
             </statements>
           </body>
           <elseBody>
             <statements>
-              --><!-- Some statements --><!--
+               Some statements 
             </statements>
           </elseBody>
         </if>
-        
-        --><!--<methodCall>
+        <methodCall>
           <dot>System</dot>
           <dot>out</dot>
           <dot>println</dot>

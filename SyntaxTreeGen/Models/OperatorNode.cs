@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Text;
 using System.Xml.Serialization;
@@ -23,11 +24,12 @@ namespace SyntaxTreeGen.Models
             Multiply,
             Divide,
             Modulo,
-            ToPowerOf,
-            Equals,
+            Xor,
             Not,
+            NotEqual,
             And,
-            Or
+            Or,
+            Equal
         }
 
         /// <summary>
@@ -61,26 +63,6 @@ namespace SyntaxTreeGen.Models
         }
 
         /// <summary>
-        /// Allows setting of operator kind (an OpKind enum) using a string
-        /// </summary>
-        [XmlElement("kind")]
-        public string StringOp
-        {
-            get { return Op.ToString(); }
-            set
-            {
-                if (value == null) throw new ArgumentNullException(nameof(value));
-                var parsedOp = (OpKind) Enum.Parse(typeof (OpKind), value);
-
-                if (Enum.IsDefined(typeof (OpKind), parsedOp))
-                    Op = parsedOp;
-                else
-                    throw new ArgumentException(
-                        "\"" + value + "\" is not a valid operator. ");
-            }   
-        }
-
-        /// <summary>
         /// Determine the string representation of an operator.
         /// </summary>
         /// <param name="op">Operator to determine</param>
@@ -107,35 +89,65 @@ namespace SyntaxTreeGen.Models
                     return "/";
                 case OpKind.Modulo:
                     return "mod";
-                case OpKind.ToPowerOf:
+                case OpKind.Xor:
                     return "^";
-                case OpKind.Equals:
+                case OpKind.Equal:
                     return "==";
                 case OpKind.Not:
+                    return "!";
+                case OpKind.NotEqual:
                     return "!=";
                 case OpKind.And:
                     return "&&";
                 case OpKind.Or:
                     return "||";
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(op), op, "The operator used does not exist.");
+                    throw new ArgumentException("Invalid operator");
             }
         }
-
+        
         /// <summary>
         /// Get the operator type associated with a string
         /// </summary>
-        /// <param name="text">Access level to fetch</param>
+        /// <param name="text">C# style symbol representaion of an operator</param>
         /// <returns></returns>
         internal static OpKind GetOperator(string text)
         {
-            OpKind res;
-
-            if (Enum.TryParse(text, true, out res))
-                return res;
-
-            // If not found, throw error
-            throw new InvalidDataException("\"" + text + "\" is not a valid access level");
+            switch (text)
+            {
+                case "<":
+                    return OpKind.LessThan;
+                case ">":
+                    return OpKind.GreaterThan;
+                case "<=":
+                    return OpKind.GreaterThanOrEqual;
+                case ">=":
+                    return OpKind.LessThanOrEqual;
+                case "+":
+                    return OpKind.Add;
+                case "-":
+                    return OpKind.Subtract;
+                case "*":
+                    return OpKind.Multiply;
+                case "/":
+                    return OpKind.Divide;
+                case "mod":
+                    return OpKind.Modulo;
+                case "^":
+                    return OpKind.Xor;
+                case "==":
+                    return OpKind.Equal;
+                case "!":
+                    return OpKind.Not;
+                case "!=":
+                    return OpKind.NotEqual;
+                case "&&":
+                    return OpKind.And;
+                case "||":
+                    return OpKind.Or;
+                default:
+                    throw new ArgumentException($"\"{text}\" is not a valid operator");
+            }
         }
 
         public override string ToString()

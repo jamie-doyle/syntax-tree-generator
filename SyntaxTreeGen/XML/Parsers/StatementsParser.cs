@@ -27,16 +27,19 @@ namespace SyntaxTreeGen.XML.Parsers
                     case "operation":
                         Result.AddSubnode(new OperationParser(Reader).Result);
                         break;
-
-                    case "call":
-                        // todo ParseCall(reader);
-                        continue;
-                    case "if":
-                        // todo ParseIf(reader);
-                        continue;
                     case "variable":
                         Result.AddSubnode(new VarParser(Reader).Result);
-                        continue;
+                        break;
+                    case "if":
+                        Result.AddSubnode(new IfParser(Reader).Result);
+                        break;
+                    case "while":
+                        Result.AddSubnode(new WhileParser(Reader).Result);
+                        break;
+
+                    case "call":
+                        throw new NotImplementedException();
+                        // todo ParseCall(reader);
                     
                     // todo a loop node (e.g. while)
                 }

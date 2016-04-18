@@ -275,42 +275,6 @@ namespace SyntaxTreeGen.XML
             return new AssignNode(left, right);
         }
 
-        internal static IfNode ParseIf(XmlReader reader)
-        {
-            // Expecting a reader pointed to <assign>
-            if (reader.Name.ToLower().Trim() != "if")
-                throw new ArgumentException("Reader should point to an <if> node");
-
-            var tmp = new IfNode();
-
-            while (reader.Read())
-            {
-                switch (reader.Name.ToLower().Trim())
-                {
-                    case "condition":
-                        if (tmp.Condition != null)
-                            throw Exception.Generate(reader, Exception.ErrorType.Conditions);
-                        // move in to condition block
-                        reader.Read();
-                        tmp.Condition = ParseOperator(reader);
-                        break;
-
-                    case "body":
-                        if (tmp.Body != null)
-                            throw Exception.Generate(reader, Exception.ErrorType.Statements);
-                        reader.Read();
-                        tmp.Body = ParseStatements(reader);
-                        break;
-                }
-
-                // advance reader to end tag
-                reader.Read();
-                if (reader.NodeType != XmlNodeType.EndElement)
-                    throw Exception.Generate(reader, Exception.ErrorType.UnclosedTag);
-            }
-
-            throw Exception.Generate(reader, Exception.ErrorType.UnclosedTag);
-        }
 
         internal static OperatorNode ParseOperator(XmlReader reader)
         {

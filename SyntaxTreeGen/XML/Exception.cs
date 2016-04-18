@@ -51,6 +51,9 @@ namespace SyntaxTreeGen.XML
                 case ErrorType.UnknownSubnode:
                     msg = "an unexpected sunode was found";
                     break;
+                case ErrorType.InvalidIf:
+                    msg = "an \"if\" must contain a condition";
+                    break;
                 default:
                     msg = "an unknown error occurred";
                     break;
@@ -73,7 +76,9 @@ namespace SyntaxTreeGen.XML
             Conditions,
 
             TooManyOperands,
-            NoOperator
+            NoOperator,
+
+            InvalidIf
         }
     }
 }

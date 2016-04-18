@@ -75,16 +75,15 @@ namespace SyntaxTreeGen.XML.Parsers
                         break;
 
                     case "statements":
-                        Reader.Read();
                         if (tmp.Statements.Any())
                             throw Exception.Generate(Reader, Exception.ErrorType.Statements);
-                        // todo ParseStatements(Reader).Result
-                        //var res = ParseStatements(reader);
-                        //tmp.Statements = res.Subnodes;
+                        
+                        // Statements stored in right 
+                        tmp.Subnodes[1] = new StatementsParser(Reader).Result;
                         break;
-
+                    
                     default:
-                        throw Exception.Generate(base.Reader, Exception.ErrorType.UnknownSubnode);
+                        throw Exception.Generate(Reader, Exception.ErrorType.UnknownSubnode);
                 }
             }
 

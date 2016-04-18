@@ -17,14 +17,14 @@ namespace SyntaxTreeGen.XML.Parsers
         {
             var tmp = new ConstantNode();
 
-            // Move to <value>
-            Reader.Read();
+            // subnode should be "value"
             if (Reader.Name.ToLower() != "value")
                 throw Exception.Generate(Reader, Exception.ErrorType.NoValue);
 
             // Read value of <value>
-            reader.Read();
+            Reader.Read();
             tmp.ConstVal = reader.Value;
+            Reader.Read();
             ReadEndTag("value");
             
             // Get </constant> end tag
