@@ -1,0 +1,40 @@
+﻿<class>
+  <accessLevel>public</accessLevel>
+  <isStatic>false</isStatic>
+  <name>HelloWorld</name>
+  <method>
+    <accessLevel>private</accessLevel>
+    <isStatic>true</isStatic>
+    <returnType>void</returnType>
+    <name>Main</name>
+    <parameters>
+      <variable>
+        <name>args</name>
+        <type>string[]</type>
+      </variable>
+    </parameters>
+    <statements>
+      <externalCall>
+        <isStatic>
+          true
+        </isStatic>
+        <qualifier>
+          System
+        </qualifier>
+        <qualifier>
+          Console
+        </qualifier>
+        <qualifier>
+          WriteLine
+        </qualifier>
+        <parameters>
+          <constant>
+            <value>
+              "Hello world!"
+            </value>
+          </constant>
+        </parameters>
+      </externalCall>
+    </statements>
+  </method>
+</class>

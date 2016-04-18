@@ -143,7 +143,10 @@
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Test.xml">
+    <Content Include="XML\Examples\HelloWorld.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="XML\Examples\Test.xml">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
