@@ -128,7 +128,6 @@
     <Compile Include="XML\Parsers\StatementsParser.cs" />
     <Compile Include="XML\Parsers\VarParser.cs" />
     <Compile Include="XML\Parsers\WhileParser.cs" />
-    <Compile Include="XML\StaticParser.cs" />
     <Compile Include="XML\Exception.cs" />
     <Compile Include="XML\Document.cs" />
     <Compile Include="Program.cs" />
@@ -149,6 +148,9 @@
     <Content Include="XML\Examples\Test.xml">
       <SubType>Designer</SubType>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

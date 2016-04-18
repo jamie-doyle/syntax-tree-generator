@@ -44,11 +44,9 @@ namespace SyntaxTreeGen.XML.Parsers
                     case "method":
                         tmp.AddSubnode(new MethodParser(Reader).Result);
                         break;
-
-                    // TODO extend to support internal classes (only supports one class per file now)
                     case "class":
-                        throw new NotImplementedException();
-                        
+                        tmp.AddSubnode(new ClassParser(Reader).Result);
+                        break;
                     default:
                         throw new InvalidDataException();
                 }  
@@ -56,6 +54,6 @@ namespace SyntaxTreeGen.XML.Parsers
             
             ReadEndTag("class");
             Result = tmp;
-        } 
+        }
     }
 }

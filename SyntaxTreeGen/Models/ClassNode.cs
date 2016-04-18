@@ -1,8 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Text;
-using System.Xml;
-using System.Xml.Serialization;
+﻿using System.Text;
 
 namespace SyntaxTreeGen.Models
 {
@@ -62,7 +58,7 @@ namespace SyntaxTreeGen.Models
             sb.Append("{");
             sb.AppendLine();
 
-            // Add methods
+            // Add methods and subclasses
             foreach (var n in Subnodes)
                 sb.Append(n);
 
