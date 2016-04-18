@@ -10,6 +10,10 @@ namespace SyntaxTreeGen.XML.Parsers
 {
     class StatementsParser : Parser
     {
+        /// <summary>
+        /// Parses lists of statements to a NodeListNode
+        /// </summary>
+        /// <param name="xmlreader"></param>
         internal StatementsParser(XmlReader xmlreader) : base(xmlreader, "statements")
         {
             Result = new NodeListNode();
@@ -36,12 +40,11 @@ namespace SyntaxTreeGen.XML.Parsers
                     case "while":
                         Result.AddSubnode(new WhileParser(Reader).Result);
                         break;
-
-                    case "call":
-                        throw new NotImplementedException();
-                        // todo ParseCall(reader);
-                    
-                    // todo a loop node (e.g. while)
+                    case "externalcall":
+                        Result.AddSubnode(new ExternalCallParser(Reader).Result);
+                        break;
+                    default:
+                        throw Exception.Generate(Reader, Exception.ErrorType.UnknownSubnode);
                 }
                 
             }

@@ -84,41 +84,33 @@
           </condition>
           
           <body>
-            
+            <!-- Parses to: System.Console.WriteLine("Hello world!") -->
+            <statements>
+              <externalCall>
+                <isStatic>
+                  true
+                </isStatic>
+                <qualifier>
+                  System
+                </qualifier>
+                <qualifier>
+                  Console
+                </qualifier>
+                <qualifier>
+                  WriteLine
+                </qualifier>
+                <parameters>
+                  <constant>
+                    <value>
+                      "Hello world!"
+                    </value>
+                  </constant>
+                </parameters>
+              </externalCall>
+            </statements>
           </body>
-          
         </while>
         
       </statements>
-        <!--<if>
-          <condition>
-            <operation>
-              <constant>
-                <value>5</value>
-              </constant>
-              <operator>&lt;</operator>
-              <constant>
-                <value>10</value>
-              </constant>
-            </operation>
-          </condition>
-          <body>
-            <statements>
-               Some statements 
-            </statements>
-          </body>
-          <elseBody>
-            <statements>
-               Some statements 
-            </statements>
-          </elseBody>
-        </if>
-        <methodCall>
-          <dot>System</dot>
-          <dot>out</dot>
-          <dot>println</dot>
-          <variable>string</variable>
-        </methodCall>--><!--
-      </statements>-->
   </method>
 </class>

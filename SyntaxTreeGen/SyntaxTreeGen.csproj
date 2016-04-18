@@ -120,6 +120,7 @@
     <Compile Include="XML\Parsers\AssignParser.cs" />
     <Compile Include="XML\Parsers\ClassParser.cs" />
     <Compile Include="XML\Parsers\ConstantParser.cs" />
+    <Compile Include="XML\Parsers\ExternalCallParser.cs" />
     <Compile Include="XML\Parsers\IfParser.cs" />
     <Compile Include="XML\Parsers\MethodParser.cs" />
     <Compile Include="XML\Parsers\OperationParser.cs" />

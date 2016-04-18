@@ -23,7 +23,7 @@ namespace SyntaxTreeGen.XML.Parsers
 
             // Read value of <value>
             Reader.Read();
-            tmp.ConstVal = reader.Value;
+            tmp.ConstVal = reader.Value.Trim();
             Reader.Read();
             ReadEndTag("value");
             

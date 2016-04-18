@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using System;
+using System.Xml;
 using SyntaxTreeGen.Models;
 
 namespace SyntaxTreeGen.XML.Parsers
@@ -25,18 +26,32 @@ namespace SyntaxTreeGen.XML.Parsers
 
                     case "body":
                         // Move to <statements>
-                        Reader.Read();
-                        body = new StatementsParser(Reader).Result;
-                        // read end
-                        ReadEndTag("body");
+                        try
+                        {
+                            Reader.Read();
+                            body = new StatementsParser(Reader).Result;
+                            // read end
+                            ReadEndTag("body");
+                        }
+                        catch (ArgumentException)
+                        {
+                            throw Exception.Generate(Reader, Exception.ErrorType.Statements);
+                        }
                         break;
 
                     case "else":
                         // Move to <statements>
-                        Reader.Read();
-                        elseBody = new StatementsParser(Reader).Result;
-                        // get end
-                        ReadEndTag("else");
+                        try
+                        {
+                            Reader.Read();
+                            body = new StatementsParser(Reader).Result;
+                            // read end
+                            ReadEndTag("else");
+                        }
+                        catch (ArgumentException)
+                        {
+                            throw Exception.Generate(Reader, Exception.ErrorType.Statements);
+                        }
                         break;
 
                     default:
