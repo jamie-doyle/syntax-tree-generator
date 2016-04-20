@@ -3,7 +3,7 @@
   <isStatic>false</isStatic>
   <name>HelloWorld</name>
   <method>
-    <accessLevel>private</accessLevel>
+    <accessLevel>public</accessLevel>
     <isStatic>true</isStatic>
     <returnType>void</returnType>
     <name>Main</name>

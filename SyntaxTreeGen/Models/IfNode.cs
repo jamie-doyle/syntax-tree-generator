@@ -5,8 +5,6 @@ namespace SyntaxTreeGen.Models
 {
     class IfNode: Node
     {
-        private static int _depth;
-        
         /// <summary>
         /// Creates an if node
         /// </summary>
@@ -38,57 +36,47 @@ namespace SyntaxTreeGen.Models
         
         public override string ToString()
         {
-            _depth++;
             var sb = new StringBuilder();
-            
+
+            sb.Append(Margin.Tab());
             sb.Append("if (" + Subnodes[0] + ")");
             sb.AppendLine();
 
-            sb.Append(Tab(_depth - 1));
+            sb.Append(Margin.Tab());
             sb.Append("{");
             sb.AppendLine();
-
-            sb.Append(Tab(_depth));
+            Margin.Indent();
+            
             sb.Append(Subnodes[1]);
-
+            
             sb.AppendLine();
-            sb.Append(Tab(_depth - 1));
+            Margin.Outdent();
+            sb.Append(Margin.Tab());
             sb.Append("}");
 
             // if three subnodes, add else part
             if (Subnodes.Count > 2)
             {
                 sb.AppendLine();
-                sb.Append(Tab(_depth - 1));
+                sb.Append(Margin.Tab());
                 sb.Append("else");
                 sb.AppendLine();
+                sb.Append(Margin.Tab());
                 sb.Append("{");
                 sb.AppendLine();
 
-                sb.Append(Tab(_depth));
+                Margin.Indent();
                 sb.Append(Subnodes[2]);
 
                 sb.AppendLine();
-                sb.Append(Tab(_depth - 1));
+
+                Margin.Outdent();
+                sb.Append(Margin.Tab());
                 sb.Append("}");
             }
-
-            _depth--;
 
             return sb.ToString();
         }
 
-        private string Tab(int i)
-        {
-            var x = "";
-
-            while (i > 0)
-            {
-                x += "  ";
-                i--;
-            }
-
-            return x;
-        }
     }
 }

@@ -44,30 +44,27 @@
           </condition>
           <body>
             <statements>
-              <operation>
-                <variable>
-                  <name>x</name>
-                </variable>
-                <operator>-</operator>
-                <constant>
-                  <value>10</value>
-                </constant>
-              </operation>
+              <if>
+                <condition>
+                  <operation>
+                    <constant>
+                      <value>x</value>
+                    </constant>
+                    <operator>&gt;</operator>
+                    <constant>
+                      <value>10</value>
+                    </constant>
+                  </operation>
+                </condition>
+                <body>
+                  <statements>
+                  </statements>
+                </body>
+
+              </if>
             </statements>
           </body>
-          <else>
-            <statements>
-              <operation>
-                <variable>
-                  <name>x</name>
-                </variable>
-                <operator>+</operator>
-                <constant>
-                  <value>10</value>
-                </constant>
-              </operation>
-            </statements>
-          </else>
+        
         </if>
         
         <while>

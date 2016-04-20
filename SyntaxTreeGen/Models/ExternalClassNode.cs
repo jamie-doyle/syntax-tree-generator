@@ -62,7 +62,9 @@ namespace SyntaxTreeGen.Models
         public override string ToString()
         {
             var sb = new StringBuilder();
-            
+
+            sb.Append(Margin.Tab());
+
             // Add all qualifiers before the last
             for (var i = 0; i < Qualifiers.Count - 1; i++)
             {

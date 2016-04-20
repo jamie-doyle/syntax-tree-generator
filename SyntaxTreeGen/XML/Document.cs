@@ -21,7 +21,7 @@ namespace SyntaxTreeGen.XML
             _docPath = Path.GetFullPath(_docPath);
 
             if (Path.GetExtension(_docPath).ToLower() != ".xml")
-                throw new ArgumentException("The file \"" + _docPath + "\" is not an XML document.");
+                throw new ArgumentException("the file \"" + _docPath + "\" is not an XML document.");
 
             // Try loading the XML doc to check it's valid
             try
@@ -31,7 +31,7 @@ namespace SyntaxTreeGen.XML
             }
             catch (XmlException)
             {
-                throw new XmlException("The given file's XML is not valid.");
+                throw new XmlException("the given file's XML is not valid.");
             }
         }
 

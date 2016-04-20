@@ -5,8 +5,59 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Viewer"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Syntax Tree Generator" Height="600" Width="800" WindowStartupLocation="CenterScreen"
+>
+    <!-- Main grid -->
     <Grid>
+        <!-- Each viewer gets its own column of 50% width -->
+        <Grid.ColumnDefinitions>
+            
+            <ColumnDefinition Width="*" MinWidth="100"/>
+            <ColumnDefinition Width="3"></ColumnDefinition>
+            <ColumnDefinition Width="*" MinWidth="100"/>
+        </Grid.ColumnDefinitions>
         
+        <!-- Menu has row of its size, viewers have column of remaining space -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Row="0" Grid.ColumnSpan="3">
+            <MenuItem Header="File">
+                <MenuItem Header="Open" Click="Open" ></MenuItem>
+                <MenuItem Header="Save" Click="Save"></MenuItem>
+                <MenuItem Header="Close"></MenuItem>
+            </MenuItem>
+            
+            <MenuItem Header="Edit">
+                <MenuItem Command="SelectAll"></MenuItem>
+                <MenuItem Command="Copy"></MenuItem>
+            </MenuItem>
+        </Menu>
+        
+        <!-- LEFT XML display -->
+        <!--WebBrowser x:Name="XmlViewer" Grid.Row="1" Grid.Column="0" Visibility="Hidden"> </-->
+        <TextBox x:Name="XmlViewer" Grid.Row="1" Grid.Column="0" IsReadOnly="True" 
+                 FontSize="16" FontFamily="Courier New" />
+        
+        <GridSplitter Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" Width="4"/>
+        
+        <!-- RIGHT Code display -->
+        <TextBox x:Name="CodeViewer" Grid.Row="1" Grid.Column="2" IsReadOnly="True" 
+                 FontSize="16" FontFamily="Courier New" />
+        
+        <!-- Overlay hides components when they're not in use -->
+        <Grid x:Name="Overlay" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" ZIndex="100" Visibility="Visible">
+            <Rectangle Fill="Gray" Stretch="Fill" />
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Opacity="0.4">
+                <TextBlock  FontSize="24" FontWeight="Bold" HorizontalAlignment="Center">
+                    No document
+                </TextBlock>
+                <TextBlock HorizontalAlignment="Center">
+                    Open an XML file using File > Open
+                </TextBlock>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>

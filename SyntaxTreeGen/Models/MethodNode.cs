@@ -129,6 +129,7 @@ namespace SyntaxTreeGen.Models
             var sb = new StringBuilder();
 
             // Build method signature
+            sb.Append(Margin.Tab());
             sb.Append(MethodAccessLevel.ToString().ToLower() + " ");
 
             if (IsStatic)
@@ -166,18 +167,20 @@ namespace SyntaxTreeGen.Models
             sb.AppendLine(); // END method sig
 
             // Open method body
-            sb.Append("{");
+            sb.Append(Margin.Tab() + "{");
             sb.AppendLine();
-
+            
             // call ToString on each method statement
+            Margin.Indent();
             foreach (var n in Subnodes.Last().Subnodes)
             {
                 sb.Append(n);
                 sb.AppendLine();
             }
+            Margin.Outdent();
 
             // Close method body
-            sb.Append("}");
+            sb.Append(Margin.Tab() + "}");
 
             return sb.ToString();
         }

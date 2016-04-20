@@ -52,8 +52,8 @@ namespace SyntaxTreeGen.Models
         public override string ToString()
         {
             HasBeenAssigned = true;
-
-            return Subnodes[0] + " " + Info + " " + Subnodes[1] + ";";
+            
+            return Margin.Tab() + Subnodes[0] + " " + Info + " " + Subnodes[1] + ";";
         }
     }
 }

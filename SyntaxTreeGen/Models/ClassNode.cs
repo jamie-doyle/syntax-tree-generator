@@ -47,6 +47,8 @@ namespace SyntaxTreeGen.Models
         public override string ToString()
         {
             var sb = new StringBuilder();
+
+            sb.Append(Margin.Tab());
             sb.Append(ClassAccessLevel.ToString().ToLower() + " " );
 
             if (IsStatic)
@@ -54,16 +56,17 @@ namespace SyntaxTreeGen.Models
 
             sb.Append("class " + Info);
             sb.AppendLine();
-
-            sb.Append("{");
+            sb.Append(Margin.Tab() + "{");
             sb.AppendLine();
 
-            // Add methods and subclasses
+            // Indent, then add methods and subclasses
+            Margin.Indent();
             foreach (var n in Subnodes)
                 sb.Append(n);
+            Margin.Outdent();
 
             sb.AppendLine();
-            sb.Append("}");
+            sb.Append(Margin.Tab() + "}");
             
             return sb.ToString();
         }

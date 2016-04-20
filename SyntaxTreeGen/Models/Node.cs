@@ -92,12 +92,11 @@ namespace SyntaxTreeGen.Models
         public static string FormatCSharp(string rawCode)
         {
             var md = new Markdown();
-            
             return md.Transform(rawCode);
         }
         
         /// <summary>
-        /// Defines available protection levels (must be capitalised to avoid use of protected
+        /// Defines available protection levels
         /// </summary>
         public enum AccessLevel
         {

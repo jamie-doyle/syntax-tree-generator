@@ -8,7 +8,7 @@ namespace SyntaxTreeGen
         static void Main(string[] args)
         {
             const string testPath = @"C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\XML\Examples\";
-            const string helloWorld = @"HelloWorld.xml";
+            const string helloWorld = @"Test.xml";
            
             var doc = new Document(testPath + helloWorld);
 
