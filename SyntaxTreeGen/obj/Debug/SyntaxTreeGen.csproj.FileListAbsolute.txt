@@ -1,9 +1,3 @@
-c:\users\jamie\documents\visual studio 2015\Projects\SyntaxTreeGen\SyntaxTreeGen\bin\Debug\SyntaxTreeGen.exe.config
-C:\Users\Jamie\documents\visual studio 2015\Projects\SyntaxTreeGen\SyntaxTreeGen\bin\Debug\SyntaxTreeGen.exe
-C:\Users\Jamie\documents\visual studio 2015\Projects\SyntaxTreeGen\SyntaxTreeGen\bin\Debug\SyntaxTreeGen.pdb
-C:\Users\Jamie\documents\visual studio 2015\Projects\SyntaxTreeGen\SyntaxTreeGen\obj\Debug\SyntaxTreeGen.csprojResolveAssemblyReference.cache
-C:\Users\Jamie\documents\visual studio 2015\Projects\SyntaxTreeGen\SyntaxTreeGen\obj\Debug\SyntaxTreeGen.exe
-C:\Users\Jamie\documents\visual studio 2015\Projects\SyntaxTreeGen\SyntaxTreeGen\obj\Debug\SyntaxTreeGen.pdb
 C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\SyntaxTreeGen.exe.config
 C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\SyntaxTreeGen.exe
 C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\SyntaxTreeGen.pdb
@@ -41,6 +35,6 @@ C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\System.Compositi
 C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\System.Composition.Runtime.xml
 C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\System.Composition.TypedParts.xml
 C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\System.Reflection.Metadata.xml
-C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\obj\Debug\SyntaxTreeGen.csprojResolveAssemblyReference.cache
 C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\obj\Debug\SyntaxTreeGen.exe
 C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\obj\Debug\SyntaxTreeGen.pdb
+C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\obj\Debug\SyntaxTreeGen.csprojResolveAssemblyReference.cache

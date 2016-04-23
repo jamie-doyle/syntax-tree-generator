@@ -18,8 +18,8 @@ namespace Viewer
     /// </summary>
     public partial class MainWindow : Window
     {
-        public string FormattedXml { get; private set; }
-        private ClassNode _nodes;
+        private Document _parserDoc;
+        private string _fileName;
 
         public MainWindow()
         {
@@ -38,16 +38,12 @@ namespace Viewer
 
             // If dialog closes without a file being selected, do nothing
             if (string.IsNullOrEmpty(dialog.FileName))
-            {
                 return;
-            }
-
+            
             // Open the XML document - present errors found to the user
-            Document parserDoc;
-
             try
             {
-                parserDoc = new Document(dialog.FileName);
+                _parserDoc = new Document(dialog.FileName);
             }
             catch (XmlException ex)
             {
@@ -55,44 +51,88 @@ namespace Viewer
                 MessageBox.Show($"This file cannot be opened as {ex.Message}");
                 return;
             }
+            
+            // Show XML 
+            XmlViewer.Text = FormatXmlFile(Path.GetFullPath(dialog.FileName));
 
-            // Parse the XML document
+            // Hide overlay and clear previous file
+            Overlay.Visibility = Visibility.Hidden;
+            CodeViewer.Text = "";
+
+            // Add filename to window title
+            _fileName = Path.GetFileName(dialog.FileName);
+            Title = $"Syntax Tree Generator - {_fileName}";
+        }
+
+        private void Save(object sender, RoutedEventArgs e)
+        {
+            // Check a document is loaded
+            if (_parserDoc == null)
+            {
+                MessageBox.Show("No XML file selected. \n\nOpen a file using File > Open");
+                return;
+            }
+            // Check code has been generated
+            if (string.IsNullOrEmpty(CodeViewer.Text))
+            {
+                MessageBox.Show("No code has been generated. \n\nGenerate code using Run > Generate");
+                return;
+            }
+
+            // Get the user's desired save location
+            var sfd = new SaveFileDialog
+            {
+                Filter = "C# Source Code file | *.cs",
+                DefaultExt = "cs"
+            };
+
+            var isPathSelected = sfd.ShowDialog();
+
+            // Exit if no location selected
+            if (isPathSelected != true) return;
+
+            // Use a StreamWriter to add each line of generated code
+            using (var sw = new StreamWriter(sfd.OpenFile()))
+            {
+                sw.WriteLine($"/* Generated from {_fileName} by Syntax Tree Generator on {DateTime.Now}*/");
+                sw.WriteLine(CodeViewer.Text);
+            }
+        }
+
+        /// <summary>
+        /// Parses the nodes contained in the the current XML file, then constructs a representation in C#
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Generate(object sender, RoutedEventArgs e)
+        {
+            // Check a document is loaded
+            if (_parserDoc == null)
+            {
+                MessageBox.Show("No XML file selected. \n\nOpen a file using File > Open");
+                return;
+            }
+            
+            // Parse the XML document, presenting errors to the user
             try
             {
-                _nodes = parserDoc.GetNodes();
-
+                var nodes = _parserDoc.GetNodes();
+                // Generate code from parsed tree nodes, display the result to the user
+                CodeViewer.Text = nodes.ToString();
             }
             catch (XmlException ex)
             {
                 // Show line number if available
                 var msg = ex.LineNumber != 0
-                    ? $"This file cannot be paarsed as {ex.Message}. Line {ex.LineNumber}, Position {ex.LinePosition}"
+                    ? $"This file cannot be parsed as {ex.Message}. Line {ex.LineNumber}, Position {ex.LinePosition}"
                     : $"This file cannot be parsed as {ex.Message}.";
 
                 MessageBox.Show(msg);
             }
-
-            // Show XML and code
-            //XmlViewer.Navigate(Path.GetFullPath(dialog.FileName));
-            XmlViewer.Text = FormatXmlFile(Path.GetFullPath(dialog.FileName));
-            CodeViewer.Text = Node.FormatCSharp(_nodes.ToString());
-
-            var res = Node.FormatCSharp(_nodes.ToString());
-
-            // Hide overlay
-            Overlay.Visibility = Visibility.Hidden;
-
-            // Add filename to window title
-            Title += " - " + Path.GetFileName(dialog.FileName);
-        }
-
-        private void Save(object sender, RoutedEventArgs e)
-        {
-
         }
 
         /// <summary>
-        /// Parses and formats an XML file
+        /// Formats an XML file
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
@@ -102,9 +142,7 @@ namespace Viewer
         private static string FormatXmlFile(string path)
         {
             var doc = new XmlDocument();
-            var fs = new FileStream(path, FileMode.Open, FileAccess.Read);
-
-            doc.Load(fs);
+            doc.Load(new FileStream(path, FileMode.Open, FileAccess.Read));
 
             var sb = new StringBuilder();
 

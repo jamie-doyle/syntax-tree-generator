@@ -12,6 +12,7 @@ namespace SyntaxTreeGen.XML
     public class Document
     {
         private readonly string _docPath;
+        private ClassNode _head;
 
         public Document(string path)
         {
@@ -41,9 +42,10 @@ namespace SyntaxTreeGen.XML
         /// <returns>Top node (e.g., ClassNode) generated from the XML</returns>
         public ClassNode GetNodes()
         {
-            // head stores the parsed class and its children
-            ClassNode head = null;
-
+            // If we've already parsed this file, return the results (no need to re-parse the same thing)
+            if (_head != null)
+                return _head;
+            
             // Create a new reader, configured to ignore comments, whitespace and directives 
             var settings = new XmlReaderSettings
             {
@@ -61,15 +63,15 @@ namespace SyntaxTreeGen.XML
                 if (reader.Name.ToLower().Trim() == "class")
                 {
                     var parser = new ClassParser(reader);
-                    head = (ClassNode) parser.Result;
+                    _head = (ClassNode) parser.Result;
                 }
                 else
                 {
-                    throw new ArgumentException("The given XML file doesn't contain a class");
+                    throw new ArgumentException("The given XML file doesn't contain a valid class");
                 }
             }
 
-            return head;
+            return _head;
         }
     }
 }

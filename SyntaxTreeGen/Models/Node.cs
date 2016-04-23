@@ -86,16 +86,6 @@ namespace SyntaxTreeGen.Models
         }
 
         /// <summary>
-        /// Formats a string with C# line breaks and indentation, using MarkdownSharp
-        /// </summary>
-        /// <returns>Formatted code</returns>
-        public static string FormatCSharp(string rawCode)
-        {
-            var md = new Markdown();
-            return md.Transform(rawCode);
-        }
-        
-        /// <summary>
         /// Defines available protection levels
         /// </summary>
         public enum AccessLevel

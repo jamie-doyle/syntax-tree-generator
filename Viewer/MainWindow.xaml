@@ -25,19 +25,22 @@
 
         <Menu Grid.Row="0" Grid.ColumnSpan="3">
             <MenuItem Header="File">
-                <MenuItem Header="Open" Click="Open" ></MenuItem>
-                <MenuItem Header="Save" Click="Save"></MenuItem>
-                <MenuItem Header="Close"></MenuItem>
+                <MenuItem Header="Open XML File" Click="Open" ></MenuItem>
+                <MenuItem Header="Save Generated Code" Click="Save"></MenuItem>
+                <MenuItem Command="Close"></MenuItem>
             </MenuItem>
             
             <MenuItem Header="Edit">
                 <MenuItem Command="SelectAll"></MenuItem>
                 <MenuItem Command="Copy"></MenuItem>
             </MenuItem>
+
+            <MenuItem Header="Run">
+                <MenuItem Header="Generate" Click="Generate"></MenuItem>
+            </MenuItem>
         </Menu>
         
         <!-- LEFT XML display -->
-        <!--WebBrowser x:Name="XmlViewer" Grid.Row="1" Grid.Column="0" Visibility="Hidden"> </-->
         <TextBox x:Name="XmlViewer" Grid.Row="1" Grid.Column="0" IsReadOnly="True" 
                  FontSize="16" FontFamily="Courier New" />
         
