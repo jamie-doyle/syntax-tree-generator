@@ -14,7 +14,7 @@ namespace ParserTests
         private const string WhileXml = "<while><condition><operation><variable><name>x</name></variable><operator>==</operator><constant><value>5</value></constant></operation></condition><body><statements></statements></body></while>";
         
         // wrong type of XML
-        private const string BadXml = "<if> </if>";
+        private const string BadXml = "<unknowntag> </unknowntag>";
 
         // Correct XML, other than a missing </while> 
         private const string UnclosedTagXml = "<while><condition><operation><variable><name>x</name></variable><operator>==</operator><constant><value>5</value></constant></operation></condition><body><statements></statements></body>";
@@ -47,7 +47,7 @@ namespace ParserTests
             _reader.Read();
 
             // should throw an exception
-            var result = (VarNode)new VarParser(_reader).Result;
+            var result = (WhileNode)new WhileParser(_reader).Result;
         }
 
         [TestMethod]
@@ -59,7 +59,7 @@ namespace ParserTests
             _reader.Read();
 
             // should throw an exception
-            var result = (VarNode)new VarParser(_reader).Result;
+            var result = (WhileNode)new WhileParser(_reader).Result;
         }
     }
 }
