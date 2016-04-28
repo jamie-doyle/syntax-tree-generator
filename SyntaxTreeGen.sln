@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SyntaxTreeGen", "SyntaxTree
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Viewer", "Viewer\Viewer.csproj", "{5D328C69-5490-4171-BCB5-1666AA4D5F44}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParserTests", "ParserTests\ParserTests.csproj", "{6DB75159-5181-43C5-95A3-0C119C57B6BB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{5D328C69-5490-4171-BCB5-1666AA4D5F44}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D328C69-5490-4171-BCB5-1666AA4D5F44}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D328C69-5490-4171-BCB5-1666AA4D5F44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DB75159-5181-43C5-95A3-0C119C57B6BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DB75159-5181-43C5-95A3-0C119C57B6BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DB75159-5181-43C5-95A3-0C119C57B6BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DB75159-5181-43C5-95A3-0C119C57B6BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

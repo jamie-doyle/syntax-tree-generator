@@ -115,7 +115,7 @@
     <Compile Include="Models\Node - Copy.cs" />
     <Compile Include="Models\Node.cs" />
     <Compile Include="Models\NodeListNode.cs" />
-    <Compile Include="Models\OperatorNode.cs" />
+    <Compile Include="Models\OperationNode.cs" />
     <Compile Include="Models\VarNode.cs" />
     <Compile Include="Models\WhileNode.cs" />
     <Compile Include="XML\Parsers\AssignParser.cs" />

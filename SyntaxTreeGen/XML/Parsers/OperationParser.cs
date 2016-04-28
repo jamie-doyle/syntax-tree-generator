@@ -21,7 +21,7 @@ namespace SyntaxTreeGen.XML.Parsers
             
             // Get the operator
             Reader.Read();
-            var parsedOp = OperatorNode.GetOperator(Reader.Value);
+            var parsedOp = OperationNode.GetOperator(Reader.Value);
             Reader.Read();
             ReadEndTag("operator");
 
@@ -32,7 +32,7 @@ namespace SyntaxTreeGen.XML.Parsers
             ReadEndTag("operation");
 
             // Set result
-            Result = new OperatorNode(left, parsedOp, right);
+            Result = new OperationNode(left, parsedOp, right);
         }
 
         private Node ParseOperand()

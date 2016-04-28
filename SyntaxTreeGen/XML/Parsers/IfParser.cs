@@ -20,7 +20,22 @@ namespace SyntaxTreeGen.XML.Parsers
                 {
                     case "condition":
                         Reader.Read();
-                        condition = new OperationParser(Reader).Result;
+
+                        // Dermine condition type
+                        switch (Reader.Name.ToLower().Trim())
+                        {
+                            case "operation":
+                                condition = new OperationParser(Reader).Result;
+                                break;
+                            // Accept constants as a condition - assume it's a valid type such as boolean
+                            case "constant":
+                                condition = new ConstantParser(Reader).Result;
+                                break;
+                            default:
+                                throw Exception.Generate(Reader, Exception.ErrorType.Conditions);
+                        }
+
+                        // Close the condition section
                         ReadEndTag("condition");
                         break;
 
@@ -44,7 +59,7 @@ namespace SyntaxTreeGen.XML.Parsers
                         try
                         {
                             Reader.Read();
-                            body = new StatementsParser(Reader).Result;
+                            elseBody = new StatementsParser(Reader).Result;
                             // read end
                             ReadEndTag("else");
                         }

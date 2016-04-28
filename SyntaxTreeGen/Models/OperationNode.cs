@@ -6,9 +6,7 @@ using System.Xml.Serialization;
 
 namespace SyntaxTreeGen.Models
 {
-    [Serializable]
-    [XmlRoot("operator")]
-    internal class OperatorNode : Node
+    internal class OperationNode : Node
     {
         /// <summary>
         /// Defines the collection of usable operators for this node
@@ -37,7 +35,7 @@ namespace SyntaxTreeGen.Models
         /// </summary>
         public OpKind Op { get; internal set; }
         
-        public OperatorNode(Node left, OpKind op, Node right) : base(2, left, right)
+        public OperationNode(Node left, OpKind op, Node right) : base(2, left, right)
         {
             Op = op;
             Info = GetOperator(op);
@@ -46,7 +44,7 @@ namespace SyntaxTreeGen.Models
         /// <summary>
         /// Empty constructor
         /// </summary>
-        internal OperatorNode()
+        internal OperationNode()
         {
         }
 
