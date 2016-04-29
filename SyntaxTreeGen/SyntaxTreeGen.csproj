@@ -112,7 +112,6 @@
     <Compile Include="Models\Margin.cs" />
     <Compile Include="Models\MethodNode.cs" />
     <Compile Include="Models\ClassNode.cs" />
-    <Compile Include="Models\Node - Copy.cs" />
     <Compile Include="Models\Node.cs" />
     <Compile Include="Models\NodeListNode.cs" />
     <Compile Include="Models\OperationNode.cs" />

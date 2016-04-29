@@ -41,6 +41,26 @@ namespace SyntaxTreeGen.XML.Parsers
                         Reader.Read();
                         ReadEndTag(attribute);
                         break;
+                    case "fields":
+                        Reader.Read();
+
+                        // Parse for variable declarations
+                        while (Reader.Name.ToLower() == "variable")
+                        {
+                            try
+                            {
+                                var parser = new VarParser(Reader);
+                                tmp.AddField((VarNode)parser.Result);
+                            }
+                            catch (ArgumentException)
+                            {
+                                throw Exception.Generate(Reader, Exception.ErrorType.UnknownSubnode);
+                            }
+                        }
+
+                        ReadEndTag(attribute);
+                        break;
+                        
                     case "method":
                         tmp.AddSubnode(new MethodParser(Reader).Result);
                         break;

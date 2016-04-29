@@ -25,14 +25,7 @@ namespace SyntaxTreeGen.Models
         {
             
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public void Instantiate()
-        {
-            
-        }
+        
 
     }
 }
