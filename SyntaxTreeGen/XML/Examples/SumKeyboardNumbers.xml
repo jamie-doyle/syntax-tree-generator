@@ -1,0 +1,66 @@
+﻿<!-- Adapted from: C# 2012 for Programmers (Deitel & Deitel) Fig 3.14 Pg 61-62 -->
+<class>
+  <accessLevel>public</accessLevel>
+  <isStatic>false</isStatic>
+  <name>Addition</name>
+  <method>
+    <accessLevel>public</accessLevel>
+    <isStatic>true</isStatic>
+    <returnType>void</returnType>
+    <name>Main</name>
+    <parameters>
+      <variable>
+        <name>args</name>
+        <type>string[]</type>
+        <isDeclaration>true</isDeclaration>
+      </variable>
+    </parameters>
+    <statements>
+      <!-- Prompt user -->
+      <externalCall>
+        <qualifier>
+          System
+        </qualifier>
+        <qualifier>
+          Console
+        </qualifier>
+        <qualifier>
+          WriteLine
+        </qualifier>
+        <parameters>
+          <constant>
+            <value>
+              "Enter first integer: "
+            </value>
+          </constant>
+        </parameters>
+      </externalCall>
+      <!-- Read first number -->
+      <assign>
+        <variable>
+          <name>number1</name>
+          <type>int</type>
+          <isDeclaration>true</isDeclaration>
+        </variable>
+        <externalCall>
+          <qualifier>
+            Convert
+          </qualifier>
+          <qualifier>
+            ToInt32
+          </qualifier>
+          <parameters>
+            <externalCall>
+              <qualifier>
+                Console
+              </qualifier>
+              <qualifier>
+                ReadLine
+              </qualifier>
+            </externalCall>
+          </parameters>
+        </externalCall>
+      </assign>
+    </statements>
+  </method>
+</class>

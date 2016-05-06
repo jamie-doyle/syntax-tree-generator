@@ -84,9 +84,6 @@
             <!-- Parses to: System.Console.WriteLine("Hello world!") -->
             <statements>
               <externalCall>
-                <isStatic>
-                  true
-                </isStatic>
                 <qualifier>
                   System
                 </qualifier>
