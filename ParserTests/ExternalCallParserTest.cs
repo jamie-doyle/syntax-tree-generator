@@ -27,7 +27,7 @@ namespace ParserTests
             // Try reading correct XML
             _reader = XmlReader.Create(new StringReader(GoodXml));
             _reader.Read();
-            var result = (ExternalClassNode)new ExternalCallParser(_reader).Result;
+            var result = (ExternalCallNode)new ExternalCallParser(_reader).Result;
 
             // Should create "System.Console.WriteLine"
             Assert.AreEqual("System", result.Qualifiers[0]);
@@ -47,7 +47,7 @@ namespace ParserTests
             _reader.Read();
 
             // should throw an exception
-            var result = (ExternalClassNode)new ExternalCallParser(_reader).Result;
+            var result = (ExternalCallNode)new ExternalCallParser(_reader).Result;
         }
 
         [TestMethod]
@@ -59,7 +59,7 @@ namespace ParserTests
             _reader.Read();
 
             // should throw an exception
-            var result = (ExternalClassNode)new ExternalCallParser(_reader).Result;
+            var result = (ExternalCallNode)new ExternalCallParser(_reader).Result;
         }
     }
 }

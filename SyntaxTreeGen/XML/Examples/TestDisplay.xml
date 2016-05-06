@@ -1,7 +1,7 @@
 ﻿<class>
   <accessLevel>public</accessLevel>
   <isStatic>false</isStatic>
-  <name>HelloWorld</name>
+  <name>Welcome1</name>
   <method>
     <accessLevel>public</accessLevel>
     <isStatic>true</isStatic>
@@ -30,7 +30,7 @@
         <parameters>
           <constant>
             <value>
-              "Hello world!"
+              "Welcome to C# Programming!"
             </value>
           </constant>
         </parameters>

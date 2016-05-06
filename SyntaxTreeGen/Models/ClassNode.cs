@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Net.NetworkInformation;
 using System.Text;
 
 namespace SyntaxTreeGen.Models
@@ -10,6 +9,9 @@ namespace SyntaxTreeGen.Models
     /// </summary>
     public class ClassNode : Node
     {
+        /// <summary>
+        /// Access level of this class
+        /// </summary>
         public AccessLevel ClassAccessLevel { get; set; }
 
         /// <summary>
@@ -58,12 +60,18 @@ namespace SyntaxTreeGen.Models
                 AddMethod(method);
         }
 
+        /// <summary>
+        /// Create NodeLists for fields and methods
+        /// </summary>
         private void SetupSubnodes()
         {
             AddSubnode(new NodeListNode());
             AddSubnode(new NodeListNode());
         }
 
+        /// <summary>
+        /// The fields of this class
+        /// </summary>
         public VarNode[] Fields
         {
             get
@@ -89,6 +97,9 @@ namespace SyntaxTreeGen.Models
             }
         }
 
+        /// <summary>
+        /// The methods of this class
+        /// </summary>
         public MethodNode[] Methods
         {
             get
@@ -132,6 +143,10 @@ namespace SyntaxTreeGen.Models
             Subnodes.First().AddSubnode(field);
         }
         
+        /// <summary>
+        /// Build the string representation of this ClassNode
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             var sb = new StringBuilder();

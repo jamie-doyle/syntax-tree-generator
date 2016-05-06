@@ -62,7 +62,7 @@ namespace SyntaxTreeGen.Models
         /// <param name="parameters">Parameters of this method</param>
         /// <param name="statements">Statements in the method</param>
         public MethodNode(string methodName, bool isStatic, AccessLevel methodAccess, string returnType, 
-            IEnumerable<Node> parameters, IEnumerable<Node> statements) : base(2)
+            IEnumerable<VarNode> parameters, IEnumerable<Node> statements) : base(2)
         {
             MethodAccessLevel = methodAccess;
             IsStatic = isStatic;
@@ -73,6 +73,10 @@ namespace SyntaxTreeGen.Models
             
             foreach (var parameter in parameters)
             {
+                // Check "IsDeclaration" flag is set
+                if (!parameter.IsDeclaration)
+                    throw new ArgumentException("All parameters in a method signature should be marked as declarations ");
+
                 Subnodes.First().AddSubnode(parameter);
             }
 

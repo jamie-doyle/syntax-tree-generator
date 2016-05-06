@@ -26,6 +26,11 @@ namespace Viewer
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Open
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Open(object sender, RoutedEventArgs e)
         {
             var dialog = new OpenFileDialog
@@ -132,13 +137,10 @@ namespace Viewer
         }
 
         /// <summary>
-        /// Formats an XML file
+        /// Loads an XML file and returns its content as a formatted string 
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        /// <remarks>
-        /// Adapted from: http://stackoverflow.com/a/20075446/2997408
-        /// </remarks>
         private static string FormatXmlFile(string path)
         {
             var doc = new XmlDocument();
@@ -146,9 +148,11 @@ namespace Viewer
 
             var sb = new StringBuilder();
 
-            using (var wr = new XmlTextWriter(new StringWriter(sb)) {Formatting = Formatting.Indented})
+            using (var wr = new XmlTextWriter(new StringWriter(sb)) { Formatting = Formatting.Indented })
+            {
                 doc.Save(wr);
-            
+            }
+
             return sb.ToString();
         }
     }

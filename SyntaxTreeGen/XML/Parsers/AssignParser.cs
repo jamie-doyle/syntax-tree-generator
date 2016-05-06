@@ -27,6 +27,9 @@ namespace SyntaxTreeGen.XML.Parsers
                 case "operation":
                     right = new OperationParser(Reader).Result;
                     break;
+                case "externalcall":
+                    right = new ExternalCallParser(Reader).Result;
+                    break;
                 default:
                     throw Exception.Generate(reader, Exception.ErrorType.BadAssignRight);
             }

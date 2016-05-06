@@ -2,21 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace SyntaxTreeGen.Models
 {
     /// <summary>
-    /// Represents a call to an external class (for instantiation or typification of variables), 
-    /// or a direct call to a static external method.
+    /// Represents a call to an external class (for instantiation of variables) or a call to a method
     /// </summary>
-    class ExternalClassNode : Node
+    class ExternalCallNode : Node
     {
-        /// <summary>
-        /// Is this a call to a static method?
-        /// </summary>
-        public readonly bool IsCallStatic;
-
         public List<string> Qualifiers { get; }
 
         public List<Node> Parameters { get; } 
@@ -24,9 +17,6 @@ namespace SyntaxTreeGen.Models
         /// <summary>
         /// Represents a reference to an external class.
         /// </summary>
-        /// <param name="isStatic">
-        ///     Is this ExternalClass used to call a static method?
-        /// </param>
         /// <param name="qualifiers">
         ///     Strings detailing, in order, the fully qualified name of the class definition or static method. 
         ///     Each string represents a namespace or class.
@@ -34,31 +24,31 @@ namespace SyntaxTreeGen.Models
         /// <param name="parameters">
         ///     Parameters (if any) to pass to a static method call. Leave null if no params required.
         /// </param>
-        public ExternalClassNode(bool isStatic, IEnumerable<string> qualifiers, IEnumerable<Node> parameters = null) : base(0)
+        public ExternalCallNode(IEnumerable<string> qualifiers, IEnumerable<Node> parameters = null) : base(0)
         {
-            IsCallStatic = isStatic;
             Qualifiers = new List<string>();
             Parameters = new List<Node>();
 
             foreach (var s in qualifiers)
                 Qualifiers.Add(s);
-
-            if (parameters != null && !isStatic)
-                throw new ArgumentException("Cannot pass parameters to a class");
             
             if (parameters != null)
             {
                 foreach (var p in parameters)
                 {
                     var pType = p.GetType();
-                    if (pType != typeof(VarNode) && pType != typeof(ConstantNode))
-                        throw new ArgumentException("Parameters must be a variable or constant");
+                    if (pType != typeof(VarNode) && pType != typeof(ConstantNode) && pType != typeof(ExternalCallNode))
+                        throw new ArgumentException("Parameters must be a variable, constant, or call");
 
                     Parameters.Add(p);
                 }
             }
         }
         
+        /// <summary>
+        /// Build code for an ExternalCall
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             var sb = new StringBuilder();
@@ -74,24 +64,21 @@ namespace SyntaxTreeGen.Models
             // Add last
             sb.Append(Qualifiers.Last().Trim());
             
-            // If a static method call, add params
-            if (IsCallStatic)
+            // add params
+            sb.Append("(");
+
+            if (Parameters.Any())
             {
-                sb.Append("(");
+                // Add parameters
+                for (var i = 0; i < Parameters.Count - 1; i++)
+                    sb.Append(Parameters[i].ToString().Trim() + ",");
 
-                if (Parameters.Any())
-                {
-                    // Add parameters
-                    for (var i = 0; i < Parameters.Count - 1; i++)
-                        sb.Append(Parameters[i].ToString().Trim() + ",");
-
-                    sb.Append(Parameters.Last().ToString().Trim());
-                }
-
-                sb.Append(")");
-                sb.Append(";");
+                sb.Append(Parameters.Last().ToString().Trim());
             }
-            
+
+            sb.Append(")");
+            sb.Append(";");
+
             return sb.ToString();
         }
     }

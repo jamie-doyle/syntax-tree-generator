@@ -1,34 +1,35 @@
 ﻿namespace SyntaxTreeGen.Models
 {
+    /// <summary>
+    /// Tracks the current size of the margin to be used in code output
+    /// </summary>
     public static class Margin
     {
-        public static int Depth;
+        private static int _depth;
 
+        /// <summary>
+        /// Increase the margin size
+        /// </summary>
         public static void Indent()
         {
-            Depth++;
+            _depth++;
         }
 
+        /// <summary>
+        /// Decrease the margin size
+        /// </summary>
         public static void Outdent()
         {
-            Depth--;
+            _depth--;
         }
-
-        public static string Tab(int i)
-        {
-            var x = "";
-
-            while (i > 0)
-            {
-                x += "  ";
-                i--;
-            }
-
-            return x;
-        }
+        
+        /// <summary>
+        /// Provides the current margin
+        /// </summary>
+        /// <returns></returns>
         public static string Tab()
         {
-            int i = Depth;
+            var i = _depth;
             var x = "";
 
             while (i > 0)

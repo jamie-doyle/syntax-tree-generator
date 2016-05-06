@@ -1,11 +1,6 @@
 ﻿using System;
-using System.CodeDom;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Security.AccessControl;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace SyntaxTreeGen.Models
 {
@@ -18,7 +13,6 @@ namespace SyntaxTreeGen.Models
         /// The assignment charater to use
         /// </summary>
         private const string AssignChar = "=";
-        public bool HasBeenAssigned { get; private set; }
          
         /// <summary>
         /// Create a new assign node 
@@ -34,16 +28,12 @@ namespace SyntaxTreeGen.Models
             if (leftType != typeof(VarNode))
                 throw new ArgumentException("Assignment must be to a VarNode.");
 
-            if (rightType != typeof(VarNode) && rightType != typeof(ConstantNode) && rightType != typeof(OperationNode))
+            if (rightType != typeof(VarNode) && rightType != typeof(ConstantNode) && rightType != typeof(OperationNode) && rightType != typeof(ExternalCallNode)) 
                 throw new ArgumentException("Cannot assign from a "+rightType);
-
+            
             Info = AssignChar;
         }
-
-        public AssignNode()
-        {
-        }
-
+        
         /// <summary>
         /// Returns a string representation of the assignment operation. The variable assigned by 
         /// this AssignNode is considered declared upon the first call of this method.
@@ -51,9 +41,35 @@ namespace SyntaxTreeGen.Models
         /// <returns></returns>
         public override string ToString()
         {
-            HasBeenAssigned = true;
+            var left = Subnodes.First();
+            var right = Subnodes.Last();
             
-            return Margin.Tab() + Subnodes[0] + " " + Info + " " + Subnodes[1] + ";";
+            var sb = new StringBuilder();
+
+            sb.Append(Margin.Tab());
+            sb.Append(left);
+            sb.Append(" " + AssignChar + " ");
+            
+            // assigning an external class?
+            if (right.GetType() == typeof (ExternalCallNode))
+            {
+                // Trim ";"
+                var rightText = right.ToString().Trim().Replace(";", "");
+
+                // Append "new" if instantiation is needed
+                // TODO Determine when "new" is needed
+                //    sb.Append("new ");
+                
+                sb.Append(rightText);
+            }
+            else
+            {
+                // Add right-side and end line
+                sb.Append(right.ToString().Trim());
+            }
+
+            sb.Append(";");
+            return sb.ToString();
         }
     }
 }

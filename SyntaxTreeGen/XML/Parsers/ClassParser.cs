@@ -62,11 +62,10 @@ namespace SyntaxTreeGen.XML.Parsers
                         break;
                         
                     case "method":
-                        tmp.AddSubnode(new MethodParser(Reader).Result);
+                        tmp.AddMethod((MethodNode)new MethodParser(Reader).Result);
                         break;
                     case "class":
-                        tmp.AddSubnode(new ClassParser(Reader).Result);
-                        break;
+                        throw new NotImplementedException("Subclasses not available yet");
                     default:
                         throw new InvalidDataException();
                 }  

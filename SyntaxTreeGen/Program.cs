@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using SyntaxTreeGen.Models;
 using SyntaxTreeGen.XML;
 
@@ -8,6 +9,15 @@ namespace SyntaxTreeGen
     {
         static void Main(string[] args)
         { 
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+
+            var left  = new VarNode("StringBuilder", "sb");
+            //var right = new ExternalCallNode(false, new [] {"System", "Text", "StringBuilder"});
+
+            //var assign = new AssignNode(left, right);
+           // Console.Write(assign);
+            Console.ReadLine();
+
             /* Example - Construct a class with two fields, and no methods, then print to console */
             var classNode = new ClassNode
             {

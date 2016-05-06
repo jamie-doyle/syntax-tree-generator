@@ -25,6 +25,9 @@ namespace SyntaxTreeGen.Models
             _varType = constVal.GetType();
         }
         
+        /// <summary>
+        /// Construct a constant node with no parameters
+        /// </summary>
         public ConstantNode() : base(0)
         {
             

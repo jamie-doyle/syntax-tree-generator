@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
+﻿using System.Xml;
 using SyntaxTreeGen.Models;
-
 namespace SyntaxTreeGen.XML.Parsers
 {
     class VarParser : Parser
@@ -31,6 +25,12 @@ namespace SyntaxTreeGen.XML.Parsers
                     case "type":
                         Reader.Read();
                         tmp.NodeType = Reader.Value;
+                        Reader.Read();
+                        ReadEndTag(attribute);
+                        break;
+                    case "isdeclaration":
+                        Reader.Read();
+                        tmp.IsDeclaration = bool.Parse(Reader.Value);
                         Reader.Read();
                         ReadEndTag(attribute);
                         break;

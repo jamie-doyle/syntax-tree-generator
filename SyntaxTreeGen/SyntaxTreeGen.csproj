@@ -107,8 +107,7 @@
     <Compile Include="Models\AssignNode.cs" />
     <Compile Include="Models\ConstantNode.cs" />
     <Compile Include="Models\IfNode.cs" />
-    <Compile Include="Models\IntConNode.cs" />
-    <Compile Include="Models\ExternalClassNode.cs" />
+    <Compile Include="Models\ExternalCallNode.cs" />
     <Compile Include="Models\Margin.cs" />
     <Compile Include="Models\MethodNode.cs" />
     <Compile Include="Models\ClassNode.cs" />
@@ -142,10 +141,13 @@
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="XML\Examples\HelloWorld.xml">
+    <Content Include="XML\Examples\SumKeyboardNumbers.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="XML\Examples\Test.xml">
+    <Content Include="XML\Examples\TestDisplay.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="XML\Examples\NestedIndenting.xml">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Xml;
 using SyntaxTreeGen.Models;
 
@@ -10,7 +8,6 @@ namespace SyntaxTreeGen.XML.Parsers
     {
         internal ExternalCallParser(XmlReader xmlreader) : base(xmlreader, "externalcall")
         {
-            var isStatic = true;
             var paramList = new List<Node>();
             var qualList = new List<string>();
             
@@ -20,13 +17,6 @@ namespace SyntaxTreeGen.XML.Parsers
 
                 switch (attribute)
                 {
-                    case "isstatic":
-                        Reader.Read();
-                        isStatic = bool.Parse(Reader.Value);
-                        Reader.Read();
-                        ReadEndTag(attribute);
-                        break;
-                    
                     case "qualifier":
                         Reader.Read();
                         qualList.Add(Reader.Value);
@@ -35,28 +25,37 @@ namespace SyntaxTreeGen.XML.Parsers
                         break;
                     
                     case "parameters":
-                        // Move to var or const node
+                        // Move in to params section
                         Reader.Read();
-
-                        while (Reader.Name.ToLower() == "variable" || Reader.Name.ToLower() == "constant")
+                        
+                        // While not at </parameters>
+                        while (!(Reader.NodeType == XmlNodeType.EndElement && Reader.Name.ToLower() == ("parameters")))
                         {
-                            try
-                            {
-                                Parser parser;
-                                
-                                if (Reader.Name.ToLower() == "variable")
-                                    parser = new VarParser(Reader);
-                                else
-                                    parser = new ConstantParser(Reader);
+                            Parser parser;
 
-                                paramList.Add(parser.Result);     
-                            }
-                            catch (ArgumentException)
+                            // Add the variable/const/call to the param list
+                            switch (Reader.Name.ToLower())
                             {
-                                throw Exception.Generate(Reader, Exception.ErrorType.UnknownSubnode);
+                                case "variable":
+                                    parser = new VarParser(Reader);
+                                    break;
+                                case "constant":
+                                    parser = new ConstantParser(Reader);
+                                    break;
+                                case "externalcall":
+                                    parser = new ExternalCallParser(Reader);
+                                    break;
+                                default:
+                                    throw Exception.Generate(Reader, Exception.ErrorType.UnknownSubnode);
                             }
+                                
+                            paramList.Add(parser.Result);
                         }
                         
+                        // Close parameters section
+                        //Reader.Read();
+                        ReadEndTag("parameters");
+
                         break;
 
                     default:
@@ -64,7 +63,7 @@ namespace SyntaxTreeGen.XML.Parsers
                 }
             }
             
-            Result = new ExternalClassNode(isStatic, qualList, paramList);
+            Result = new ExternalCallNode(qualList, paramList);
             ReadEndTag("externalcall");
         }
     }
