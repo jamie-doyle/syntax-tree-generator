@@ -128,9 +128,7 @@ namespace Viewer
             catch (XmlException ex)
             {
                 // Show line number if available
-                var msg = ex.LineNumber != 0
-                    ? $"This file cannot be parsed as {ex.Message}. Line {ex.LineNumber}, Position {ex.LinePosition}"
-                    : $"This file cannot be parsed as {ex.Message}.";
+                var msg = $"This file cannot be parsed as {ex.Message}.";
 
                 MessageBox.Show(msg);
             }

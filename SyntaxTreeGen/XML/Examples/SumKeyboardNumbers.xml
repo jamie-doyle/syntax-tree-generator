@@ -61,6 +61,71 @@
           </parameters>
         </externalCall>
       </assign>
+      <!-- Read second number -->
+      <assign>
+        <variable>
+          <name>number2</name>
+          <type>int</type>
+          <isDeclaration>true</isDeclaration>
+        </variable>
+        <externalCall>
+          <qualifier>
+            Convert
+          </qualifier>
+          <qualifier>
+            ToInt32
+          </qualifier>
+          <parameters>
+            <externalCall>
+              <qualifier>
+                Console
+              </qualifier>
+              <qualifier>
+                ReadLine
+              </qualifier>
+            </externalCall>
+          </parameters>
+        </externalCall>
+      </assign>
+      
+      <!-- Sum numbers -->
+      <assign>
+        <variable>
+          <name>sum</name>
+          <type>int</type>
+          <isDeclaration>true</isDeclaration>
+        </variable>
+        <operation>
+          <variable>
+            <name>number1</name>
+            <type>int</type>
+          </variable>
+          <operator>+</operator>
+          <variable>
+            <name>number2</name>
+            <type>int</type>
+          </variable>
+        </operation>
+      </assign>
+      
+      <!-- Print sum -->
+      <externalCall>
+        <qualifier>
+          System
+        </qualifier>
+        <qualifier>
+          Console
+        </qualifier>
+        <qualifier>
+          WriteLine
+        </qualifier>
+        <parameters>
+          <variable>
+            <name>sum</name>
+            <type>int</type>
+          </variable>
+        </parameters>
+      </externalCall>
     </statements>
   </method>
 </class>
