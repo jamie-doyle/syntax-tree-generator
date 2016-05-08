@@ -67,19 +67,20 @@ namespace SyntaxTreeGen.XML
             
             using (var reader = XmlReader.Create(_docPath, settings))
             {
-                // Move reader to outer class statement 
-                reader.Read();
-
-                // Do parsing
-                if (reader.Name.ToLower().Trim() == "class")
+                // Advance reader until "class" is reached
+                while (reader.Read())
                 {
+                    // Continue looping if this isn't a class
+                    if (reader.Name.ToLower().Trim() != "class") continue;
+
+                    // otherwise, parse class
                     var parser = new ClassParser(reader);
                     _head = (ClassNode) parser.Result;
                 }
-                else
-                {
-                    throw new ArgumentException("The given XML file doesn't contain a valid class");
-                }
+                
+                // If head isn't set, throw exception
+                if (_head == null)
+                    throw new XmlException("the given XML file doesn't contain a valid class"); 
             }
 
             return _head;

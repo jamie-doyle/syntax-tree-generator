@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<class>
+  <accessLevel>public</accessLevel>
+  <isStatic>false</isStatic>
+  <name>GradeBook</name>
+  <method>
+    <accessLevel>public</accessLevel>
+    <isStatic>false</isStatic>
+    <returnType>void</returnType>
+    <name>DisplayMessage</name>
+    <statements>
+      <externalCall>
+        <qualifier>
+          System
+        </qualifier>
+        <qualifier>
+          Console
+        </qualifier>
+        <qualifier>
+          WriteLine
+        </qualifier>
+        <parameters>
+          <constant>
+            <value>
+              "Welcome to Grade Book!"
+            </value>
+          </constant>
+        </parameters>
+      </externalCall>
+    </statements>
+  </method>
+</class>

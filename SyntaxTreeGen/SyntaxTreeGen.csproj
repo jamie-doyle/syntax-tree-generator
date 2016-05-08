@@ -22,7 +22,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\SyntaxTreeGen.XML</DocumentationFile>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -117,6 +118,11 @@
     <Compile Include="Models\OperationNode.cs" />
     <Compile Include="Models\VarNode.cs" />
     <Compile Include="Models\WhileNode.cs" />
+    <Compile Include="XML\Examples\Results\AccountClass.cs" />
+    <Compile Include="XML\Examples\Results\Comparison.cs" />
+    <Compile Include="XML\Examples\Results\DisplayWelcome.cs" />
+    <Compile Include="XML\Examples\Results\GradeBookClass.cs" />
+    <Compile Include="XML\Examples\Results\SumKeyboardNumbers.cs" />
     <Compile Include="XML\Parsers\AssignParser.cs" />
     <Compile Include="XML\Parsers\ClassParser.cs" />
     <Compile Include="XML\Parsers\ConstantParser.cs" />
@@ -142,10 +148,13 @@
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="XML\Examples\AccountClass.xml" />
+    <Content Include="XML\Examples\Comparison.xml" />
+    <Content Include="XML\Examples\GradeBookClass.xml" />
     <Content Include="XML\Examples\SumKeyboardNumbers.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="XML\Examples\TestDisplay.xml">
+    <Content Include="XML\Examples\DisplayWelcome.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="XML\Examples\NestedIndenting.xml">

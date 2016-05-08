@@ -43,7 +43,8 @@ namespace SyntaxTreeGen.Models
         /// <returns></returns>
         public override string ToString()
         {
-            return !IsDeclaration ? base.ToString() : $"{NodeType} {Info}";
+            // If this variable is a declaration, append a tab, type and end the line with ";"
+            return !IsDeclaration ? base.ToString() : $"{Margin.Tab()}{NodeType} {Info};";
         }
     }
 }

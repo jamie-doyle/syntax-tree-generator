@@ -16,6 +16,23 @@
       </variable>
     </parameters>
     <statements>
+      <!-- Declarations -->
+      <variable>
+        <name>number1</name>
+        <type>int</type>
+        <isDeclaration>true</isDeclaration>
+      </variable>
+      <variable>
+        <name>number2</name>
+        <type>int</type>
+        <isDeclaration>true</isDeclaration>
+      </variable>
+      <variable>
+        <name>sum</name>
+        <type>int</type>
+        <isDeclaration>true</isDeclaration>
+      </variable>      
+      
       <!-- Prompt user -->
       <externalCall>
         <qualifier>
@@ -40,7 +57,6 @@
         <variable>
           <name>number1</name>
           <type>int</type>
-          <isDeclaration>true</isDeclaration>
         </variable>
         <externalCall>
           <qualifier>
@@ -61,12 +77,12 @@
           </parameters>
         </externalCall>
       </assign>
+      
       <!-- Read second number -->
       <assign>
         <variable>
           <name>number2</name>
           <type>int</type>
-          <isDeclaration>true</isDeclaration>
         </variable>
         <externalCall>
           <qualifier>
@@ -93,7 +109,6 @@
         <variable>
           <name>sum</name>
           <type>int</type>
-          <isDeclaration>true</isDeclaration>
         </variable>
         <operation>
           <variable>

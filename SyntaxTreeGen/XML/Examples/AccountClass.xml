@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<class>
+  <accessLevel>public</accessLevel>
+  <isStatic>false</isStatic>
+  <name>Account</name>
+  <!-- Instance variable -->
+  <fields>
+    <variable>
+      <type>decimal</type>
+      <name>Balance</name>
+      <isDeclaration>true</isDeclaration>
+    </variable>
+  </fields>
+  
+  <!-- Constructor -->
+  <method>
+    <accessLevel>public</accessLevel>
+    <isStatic>false</isStatic>
+    <name>Account</name>
+    
+    <parameters>
+      <variable>
+        <type>decimal</type>
+        <name>balance</name>
+        <isDeclaration>true</isDeclaration>
+      </variable>
+    </parameters>
+    
+    <statements>
+      <assign>
+        <variable>
+          <type>decimal</type>
+          <name>Balance</name>
+        </variable>
+        <variable>
+          <type>decimal</type>
+          <name>balance</name>
+        </variable>
+      </assign>
+    </statements>
+  </method>
+  
+  <!-- Credit method -->
+  <method>
+    <accessLevel>public</accessLevel>
+    <isStatic>false</isStatic>
+    <returnType>void</returnType>
+    <name>Credit</name>
+
+    <parameters>
+      <variable>
+        <type>decimal</type>
+        <name>amount</name>
+        <isDeclaration>true</isDeclaration>
+      </variable>
+    </parameters>
+
+    <statements>
+      <assign>
+        <variable>
+          <type>decimal</type>
+          <name>Balance</name>
+        </variable>
+        <operation>
+          <variable>
+            <type>decimal</type>
+            <name>Balance</name>
+          </variable>
+          <operator>+</operator>
+          <variable>
+            <type>decimal</type>
+            <name>tmount</name>
+          </variable>
+        </operation>
+      </assign>
+    </statements>
+  </method>
+
+</class>

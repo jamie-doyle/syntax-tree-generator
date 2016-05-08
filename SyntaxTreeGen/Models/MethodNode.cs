@@ -135,6 +135,9 @@ namespace SyntaxTreeGen.Models
         {
             var sb = new StringBuilder();
 
+            // add a clear line before method sig
+            sb.AppendLine();
+
             // Build method signature
             sb.Append(Margin.Tab());
             sb.Append(MethodAccessLevel.ToString().ToLower() + " ");
@@ -192,7 +195,8 @@ namespace SyntaxTreeGen.Models
 
             // Close method body
             sb.Append(Margin.Tab() + "}");
-
+            sb.AppendLine();
+            
             return sb.ToString();
         }
     }
