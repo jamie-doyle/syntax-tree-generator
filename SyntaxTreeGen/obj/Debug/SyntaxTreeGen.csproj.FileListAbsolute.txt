@@ -38,3 +38,4 @@ C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\System.Reflectio
 C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\obj\Debug\SyntaxTreeGen.exe
 C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\obj\Debug\SyntaxTreeGen.pdb
 C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\obj\Debug\SyntaxTreeGen.csprojResolveAssemblyReference.cache
+C:\Users\Jamie\Source\Repos\Syntax Tree\SyntaxTreeGen\bin\Debug\SyntaxTreeGen.XML

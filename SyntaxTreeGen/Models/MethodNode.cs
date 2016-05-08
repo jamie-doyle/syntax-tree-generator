@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Xml.Serialization;
 
 namespace SyntaxTreeGen.Models
 {
-    [XmlRoot("Method", Namespace = "qub.ac.uk/jdoyle7/SyntaxTree/Method")]
+    /// <summary>
+    /// Represents a method declaration
+    /// </summary>
     public class MethodNode : Node
     {
+        /// <summary>
+        /// The access level of this method
+        /// </summary>
         public AccessLevel MethodAccessLevel { get; set; }
         
         public bool IsStatic { get; set; }
@@ -20,7 +24,6 @@ namespace SyntaxTreeGen.Models
             get { return Info; } set { Info = value; }
         }
         
-
         /// <summary>
         /// Default constructor
         /// </summary>
@@ -129,7 +132,6 @@ namespace SyntaxTreeGen.Models
         /// <returns>string</returns>
         public override string ToString()
         {
-            // TODO: a LOT going on here - refactor?
             var sb = new StringBuilder();
 
             // Build method signature
@@ -139,12 +141,16 @@ namespace SyntaxTreeGen.Models
             if (IsStatic)
                 sb.Append("static" + " ");
 
-            // Stop full qualification of "void" (this doesn't work in C#)
-            if (ReturnType.Contains("System.Void"))
-                sb.Append("void ");
-            else
-                sb.Append(ReturnType + " ");
-            
+            // Add return type, if appropriate (constructors, etc. don't have one)
+            if (ReturnType != null)
+            {
+                // Stop full qualification of "void" (this doesn't work in C#)
+                if (ReturnType.Contains("System.Void"))
+                    sb.Append("void ");
+                else
+                    sb.Append(ReturnType + " ");
+            }
+
             sb.Append(Info + " ");
 
             // parameters

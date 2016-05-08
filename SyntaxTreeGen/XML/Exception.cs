@@ -4,6 +4,9 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace SyntaxTreeGen.XML
 {
+    /// <summary>
+    /// Builds exceptions from a set of predefined messages
+    /// </summary>
     internal static class Exception
     {
         /// <summary>

@@ -69,6 +69,11 @@ namespace Viewer
             Title = $"Syntax Tree Generator - {_fileName}";
         }
 
+        /// <summary>
+        /// Performs a save operation on the current generated code
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Save(object sender, RoutedEventArgs e)
         {
             // Check a document is loaded
