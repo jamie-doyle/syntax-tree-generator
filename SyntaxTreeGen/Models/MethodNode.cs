@@ -15,15 +15,16 @@ namespace SyntaxTreeGen.Models
         /// </summary>
         public AccessLevel MethodAccessLevel { get; set; }
         
+        /// <summary>
+        /// Is this method static?
+        /// </summary>
         public bool IsStatic { get; set; }
         
+        /// <summary>
+        /// String representation of the method's return type
+        /// </summary>
         public string ReturnType { get; set; }
 
-        public string Name
-        {
-            get { return Info; } set { Info = value; }
-        }
-        
         /// <summary>
         /// Default constructor
         /// </summary>
@@ -60,7 +61,7 @@ namespace SyntaxTreeGen.Models
         /// </summary>
         /// <param name="methodName">Name of this method</param>
         /// <param name="isStatic">Dermines if the method is static</param>
-        /// <param name="methodProtection">Protection level</param>
+        /// <param name="methodAccess">Protection level</param>
         /// <param name="returnType">C# return type of this method</param>
         /// <param name="parameters">Parameters of this method</param>
         /// <param name="statements">Statements in the method</param>

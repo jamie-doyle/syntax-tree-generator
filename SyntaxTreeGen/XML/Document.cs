@@ -13,7 +13,14 @@ namespace SyntaxTreeGen.XML
     {
         private readonly string _docPath;
         private ClassNode _head;
-
+        
+        /// <summary>
+        /// Create a new parsing document
+        /// </summary>
+        /// <param name="path"></param>
+        /// <exception cref="ArgumentException">The file isn't an XML document</exception>
+        /// <exception cref="XmlException">The file doesn't contain valid XML</exception>
+        /// <exception cref="UnauthorizedAccessException">The file couldn't be accessed</exception>
         public Document(string path)
         {
             _docPath = path;
@@ -33,6 +40,10 @@ namespace SyntaxTreeGen.XML
             catch (XmlException)
             {
                 throw new XmlException("the given file's XML is not valid.");
+            }
+            catch (UnauthorizedAccessException)
+            {
+                throw new UnauthorizedAccessException("this file appears to be read-only.");
             }
         }
 

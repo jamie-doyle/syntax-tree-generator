@@ -90,9 +90,13 @@ namespace SyntaxTreeGen.Models
         /// </summary>
         public enum AccessLevel
         {
+            /// <summary> Indicates a public access level </summary>
             Public,
+            /// <summary> Indicates a private access level </summary>
             Private,
+            /// <summary> Indicates a internal access level </summary>
             Internal,
+            /// <summary> Indicates a protected access level </summary>
             Protected
         }
 
@@ -101,10 +105,11 @@ namespace SyntaxTreeGen.Models
         /// </summary>
         /// <param name="text">Access level to fetch</param>
         /// <returns></returns>
-        internal static Node.AccessLevel GetAccessLevel(string text)
+        internal static AccessLevel GetAccessLevel(string text)
         {
             AccessLevel res;
 
+            // If parsed successfully, exit method
             if (Enum.TryParse(text, true, out res))
                 return res;
             

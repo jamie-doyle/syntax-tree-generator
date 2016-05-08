@@ -8,12 +8,18 @@ namespace SyntaxTreeGen.Models
     /// </summary>
     public class VarNode : Node
     {
+        /// <summary>
+        /// String representation of the variable type
+        /// </summary>
         public string NodeType { get; set; }
 
+        /// <summary>
+        /// Does this node declare the variable?
+        /// </summary>
         public bool IsDeclaration { get; set; }
 
         /// <summary>
-        /// Constructor for VarNode
+        /// Constructs a VarNode with all fields
         /// </summary>
         /// <param name="type">String corresponding to variable's C# type</param>
         /// <param name="varName">Name of the variable. Should be a valid C# identifier</param>
@@ -24,9 +30,11 @@ namespace SyntaxTreeGen.Models
             Info = varName;
         }
 
+        /// <summary>
+        /// Default VarNode constructor
+        /// </summary>
         public VarNode()
         {
-            
         }
 
         /// <summary>

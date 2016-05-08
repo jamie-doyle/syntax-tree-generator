@@ -29,8 +29,6 @@ namespace SyntaxTreeGen
             
             Console.WriteLine(classNode);
             Console.ReadLine();
-
-            //TODO: Generate tutorial programs from node representation (Deitel & Deitel)
         }
     }
 }

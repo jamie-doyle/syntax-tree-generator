@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace SyntaxTreeGen.Models
 {
+    /// <summary>
+    /// A Node containing a list of other Nodes
+    /// </summary>
     public class NodeListNode : Node
     {
         /// <summary>
