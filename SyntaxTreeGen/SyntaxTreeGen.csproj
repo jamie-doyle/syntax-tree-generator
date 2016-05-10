@@ -118,11 +118,6 @@
     <Compile Include="Models\OperationNode.cs" />
     <Compile Include="Models\VarNode.cs" />
     <Compile Include="Models\WhileNode.cs" />
-    <Compile Include="XML\Examples\Results\AccountClass.cs" />
-    <Compile Include="XML\Examples\Results\Comparison.cs" />
-    <Compile Include="XML\Examples\Results\DisplayWelcome.cs" />
-    <Compile Include="XML\Examples\Results\GradeBookClass.cs" />
-    <Compile Include="XML\Examples\Results\SumKeyboardNumbers.cs" />
     <Compile Include="XML\Parsers\AssignParser.cs" />
     <Compile Include="XML\Parsers\ClassParser.cs" />
     <Compile Include="XML\Parsers\ConstantParser.cs" />
@@ -163,6 +158,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />
+    <Folder Include="XML\Examples\Results\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

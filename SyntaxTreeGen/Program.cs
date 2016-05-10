@@ -7,23 +7,25 @@ namespace SyntaxTreeGen
 {
     class Program
     {
+        /// <summary>
+        /// Example of manual instantiation
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
-        { 
-            var sb = new StringBuilder();
+        {   
+            /* NB - The full program can be ran by building the Viewer project */
 
-            var left  = new VarNode("StringBuilder", "sb");
-            //var right = new ExternalCallNode(false, new [] {"System", "Text", "StringBuilder"});
-
-            //var assign = new AssignNode(left, right);
-            // Console.Write(assign);
-            Console.ReadLine();
-
-            /* Example - Construct a class with two fields, and no methods, then print to console */
+            // This will print as public static class TestClass { ... }
             var classNode = new ClassNode
             {
                 Name = "TestClass",
                 ClassAccessLevel = Node.AccessLevel.Public,
                 Fields = new[] {new VarNode("int", "TestInt"), new VarNode("string", "TestString")},
+                Methods = new []
+                {
+                    // Declares a method - "public static void Main(string[] args)
+                    new MethodNode("Main", true, Node.AccessLevel.Public, "void", new []{new VarNode("string[]", "args", true) }),
+                },
                 IsStatic = true
             };
             
